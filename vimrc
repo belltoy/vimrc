@@ -96,8 +96,9 @@ imap <up> <C-o>gk
 imap <down> <C-o>gj
 imap .. ->
 
-" 选中后按/直接搜索
+" 选中后按/向后(?向前)直接搜索
 vmap / y/<C-R>"<CR>
+vmap ? y?<C-R>"<CR>
 
 " 缩排
 nmap <Tab> v>
