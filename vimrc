@@ -113,15 +113,15 @@ imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
 
 " Omni Completion ******************************************************** {{{
-autocmd FileType html :set omnifunc=htmlcomplete#CompleteTags
-autocmd FileType python set omnifunc=pythoncomplete#Complete
-autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType css set omnifunc=csscomplete#CompleteCSS
-autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
-autocmd FileType php set omnifunc=phpcomplete#CompletePHP
-autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
+autocmd FileType python setlocal omnifunc=pythoncomplete#Complete
+autocmd FileType javascript setlocal omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType css setlocal omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml setlocal omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
+autocmd FileType c setlocal omnifunc=ccomplete#Complete
 " May require ruby compiled in
-autocmd FileType ruby,eruby set omnifunc=rubycomplete#Complete 
+autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete 
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -237,9 +237,8 @@ map ,b :FuzzyFinderBuffer<CR>
 
 " autocomplpop *********************************************************** {{{
 " complete option
-"set complete=.,w,b,u,t,k
-"let g:AutoComplPop_CompleteOption = '.,w,b,u,t,k'
-"set complete=.
+set complete=.,w,b,u,t,k
+let g:AutoComplPop_CompleteOption = '.,w,b,u,t,k'
 let g:AutoComplPop_IgnoreCaseOption = 0
 let g:AutoComplPop_BehaviorKeywordLength = 2
 " }}}
@@ -267,6 +266,7 @@ endfun
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " See ~/.gvimrc
 
+" load .vimrc in current directory
 set exrc
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
