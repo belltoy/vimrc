@@ -87,6 +87,7 @@ set nolist
 " }}}
 
 " Mappings *************************************************************** {{{
+let mapleader = ","
 " Professor VIM says '87% of users prefer jj over esc', jj abrams disagrees
 imap jj <Esc>
 imap uu _
@@ -130,7 +131,7 @@ autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 
 " NERDTreDTree********************************************************** {{{
 map <F10> :NERDTreeToggle<CR>
-:noremap ,n :NERDTreeToggle<CR>
+noremap <silent> <Leader>n :NERDTreeToggle<CR>
 
 " User instead of Netrw when doing an edit /foobar
 let NERDTreeHijackNetrw=1
@@ -148,10 +149,8 @@ let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\~$']
 
 " Taglist *************************************************************** {{{
 "定义Tlist的快捷键为tl
-let mapleader = ","
-"map <silent> <Leader>tl :Tlist<CR>
 map <F8> :Tlist<CR><C-W><C-W>
-map ,f :Tlist<CR><C-W><C-W>
+map <silent> <Leader>f :Tlist<CR><C-W><C-W>
 
 let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 
@@ -231,16 +230,25 @@ nmap d<C-]> :cs find d <C-R>=expand("<cword>")<CR><CR>
 
 " fuzzyfinder_textmate *************************************************** {{{
 "map ,f :FuzzyFinderTextMate<CR>
-map ,b :FuzzyFinderBuffer<CR>
 "let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
+
+" FuzzyFinder
+map <silent> <Leader>b :FufBuffer<CR>
+map <silent> <Leader>ab :FufAddBookmark<CR>
+map <silent> <Leader>ob :FufBookmark<CR>
 " }}}
 
 " autocomplpop *********************************************************** {{{
 " complete option
 set complete=.,w,b,u,t,k
-let g:AutoComplPop_CompleteOption = '.,w,b,u,t,k'
-let g:AutoComplPop_IgnoreCaseOption = 0
-let g:AutoComplPop_BehaviorKeywordLength = 2
+
+"let g:AutoComplPop_CompleteOption = '.,w,b,u,t,k'
+"let g:AutoComplPop_IgnoreCaseOption = 0
+"let g:AutoComplPop_BehaviorKeywordLength = 2
+
+let g:acp_completeOption = '.,w,b,u,t,k'
+let g:acp_ignorecaseOption = 0
+let g:acp_behaviorKeywordLength = 2
 " }}}
 
 " pyditcion ************************************************************** {{{

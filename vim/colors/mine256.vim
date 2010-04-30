@@ -24,7 +24,7 @@ hi ModeMsg          term=bold           cterm=bold              gui=bold
 hi StatusLine       term=reverse,bold   cterm=reverse,bold      gui=reverse,bold
 hi StatusLineNC     term=reverse        cterm=reverse           gui=reverse
 hi VertSplit        term=reverse        cterm=reverse           gui=reverse
-hi Visual           term=reverse        ctermbg=black           guibg=grey60
+hi Visual           term=reverse        ctermbg=grey           guibg=grey60
 hi VisualNOS        term=underline,bold cterm=underline,bold    gui=underline,bold
 hi DiffText         term=reverse        cterm=bold              ctermbg=Red         gui=bold        guibg=Red
 hi Cursor           guibg=Green         guifg=Black
@@ -51,35 +51,11 @@ hi Comment          ctermfg=DarkCyan
 " Groups for syntax highlighting
 hi Constant         term=underline      ctermfg=Magenta         guifg=#ffa0a0       "guibg=grey5
 hi Special          term=bold           ctermfg=LightRed        guifg=Orange        "guibg=grey5
-if &t_Co > 8
-  hi Statement term=bold cterm=bold ctermfg=Yellow guifg=#ffff60 gui=bold
-endif
+hi Statement term=bold cterm=bold ctermfg=Yellow guifg=#ffff60 gui=bold
 hi Ignore           ctermfg=DarkGrey    guifg=grey20
 
 " 设置全能补全时的菜单颜色
-hi Pmenu ctermbg=LightCyan
+hi Pmenu ctermbg=Blue
 hi PmenuSel ctermbg=LightGray
 hi LongLineWarning  guifg=NONE        guibg=#371F1C     gui=underline ctermfg=NONE        ctermbg=NONE	      cterm=underline
-if &t_Co > 8
-  hi Pmenu ctermbg=Blue
-  hi Visual           term=reverse        ctermbg=Grey           guibg=grey60
-  hi Search           term=reverse        ctermbg=Cyan           ctermfg=Black   guibg=Cyan      guifg=Black
-  hi Directory        term=bold           ctermfg=Blue       guifg=Cyan
-  hi LineNr           term=underline      ctermfg=Yellow          guifg=Yellow
-  hi MoreMsg          term=bold           ctermfg=Green      gui=bold            guifg=SeaGreen
-  hi NonText          term=bold           ctermfg=Blue       gui=bold            guifg=Blue guibg=grey30
-  hi Question         term=standout       ctermfg=Green      gui=bold            guifg=Green
-  hi Search           term=reverse        ctermbg=Green           ctermfg=Gray   guibg=Cyan      guifg=Black
-  hi SpecialKey       term=bold           ctermfg=Blue       guifg=Cyan
-  hi Title            term=bold           ctermfg=Magenta    gui=bold            guifg=Magenta
-  hi WarningMsg       term=standout       ctermfg=Red        guifg=Red
-  hi WildMenu         term=standout       ctermbg=Yellow          ctermfg=Black       guibg=Yellow    guifg=Black
-  hi Folded           term=standout       ctermbg=Grey       ctermfg=DarkBlue    guibg=grey30    guifg=Grey
-  hi FoldColumn       term=standout       ctermbg=Grey       ctermfg=DarkBlue    guibg=Grey      guifg=DarkBlue
-  hi DiffAdd          term=bold           ctermbg=DarkGreen       guibg=DarkGreen
-  hi DiffChange       term=bold           ctermbg=DarkBlue        guibg=DarkBlue
-  hi DiffDelete       term=bold           ctermfg=Blue            ctermbg=DarkRed     gui=bold        guifg=Blue guibg=DarkCyan
-  hi CursorColumn     term=reverse        ctermbg=Grey       guibg=grey40
-  hi CursorLine       term=underline      ctermbg=Grey       guibg=grey40
-endif
 " vim: sw=2
