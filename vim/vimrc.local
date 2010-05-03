@@ -1,0 +1,4 @@
+if v:version < 702
+    let g:loaded_acp = 1
+    let g:loaded_fuf = 1
+endif
