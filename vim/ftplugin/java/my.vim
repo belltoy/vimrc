@@ -25,9 +25,9 @@ let JavaBrowser_Inc_Winwidth=0
 nmap <F7> :JavaBrowser<CR>
 imap <F7> <ESC><F7>
 
-autocmd FileType java let b:jcommenter_class_author='Zhao Zhongqiu'
-autocmd FileType java let b:jcommenter_file_author='Zhao Zhongqiu(belltoy@gmail.com)'
+autocmd FileType java let b:jcommenter_class_author='belltoy'
+autocmd FileType java let b:jcommenter_file_author='belltoy(belltoy@gmail.com)'
 
 " 输入 <F12> 就能直接写入注释.
-nmap <F12> :call JCommentWriter()<CR>
-imap <F12> <ESC><F12>
+" nmap <F12> :call JCommentWriter()<CR>
+" imap <F12> <ESC><F12>

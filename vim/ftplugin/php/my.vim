@@ -42,7 +42,7 @@ abbr inc include("");<Left><Left><Left><C-R>=Eatchar('\s')<CR>
 abbr inco include_once("");<Left><Left><Left><C-R>=Eatchar('\s')<CR>
 
 "打开 SQL 语法高亮: >
-let php_sql_query = 1
+let php_sql_query = 0
 "打开字符串里的 HTML 语法高亮: >
 let php_htmlInStrings = 1
 

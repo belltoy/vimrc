@@ -141,7 +141,7 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMouseMode=1
 
 " Set ignore file regex
-let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\~$']
+let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$']
 " }}}
 
 " Netrw ****************************************************************** {{{
@@ -250,6 +250,12 @@ set complete=.,w,b,u,t,k
 let g:acp_completeOption = '.,w,b,u,t,k'
 let g:acp_ignorecaseOption = 0
 let g:acp_behaviorKeywordLength = 2
+" }}}
+
+" zen coding ************************************************************* {{{
+let g:user_zen_settings = { 'php' : { 'extends' : 'html', 'filters' : 'c', }, 'xml' : { 'extends' : 'html', } }
+"let g:user_zen_expandabbr_key = '<c-e>'
+let g:use_zen_complete_tag = 1
 " }}}
 
 " pyditcion ************************************************************** {{{
