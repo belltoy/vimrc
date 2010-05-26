@@ -50,6 +50,7 @@ set softtabstop=4  "sts 设置 softtabstop 为 4. 输入 tab 后就跳了 4 格
 set tabstop=4      "实际的 tab 即为 4 个空格, 而不是缺省的 8 个
 set expandtab      "在输入 tab 后, vim 用恰当的空格来填充这个 tab
 set diffopt+=vertical
+set virtualedit=all   "光标可以定位在没有实际字符的地方
 
 " Line Wrapping ********************************************************** {{{
 set nowrap
