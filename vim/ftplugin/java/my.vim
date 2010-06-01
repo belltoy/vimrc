@@ -29,5 +29,5 @@ autocmd FileType java let b:jcommenter_class_author='belltoy'
 autocmd FileType java let b:jcommenter_file_author='belltoy(belltoy@gmail.com)'
 
 " 输入 <F12> 就能直接写入注释.
-" nmap <F12> :call JCommentWriter()<CR>
-" imap <F12> <ESC><F12>
+nmap <F12> :call JCommentWriter()<CR>
+imap <F12> <ESC><F12>

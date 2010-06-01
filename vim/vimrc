@@ -130,6 +130,27 @@ autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" VCSCommand ********************************************************** {{{
+" nmap ,ca <Plug>VCSAdd
+"
+" The default mappings are begin with c:
+"
+nmap <Leader>va <Plug>VCSAdd
+nmap <Leader>vn <Plug>VCSAnnotate
+nmap <Leader>vN <Plug>VCSAnnotate!
+nmap <Leader>vc <Plug>VCSCommit
+nmap <Leader>vD <Plug>VCSDelete
+nmap <Leader>vd <Plug>VCSDiff
+nmap <Leader>vg <Plug>VCSGotoOriginal
+nmap <Leader>vG <Plug>VCSGotoOriginal!
+nmap <Leader>vi <Plug>VCSInfo
+nmap <Leader>vl <Plug>VCSLog
+nmap <Leader>vL <Plug>VCSLock
+nmap <Leader>vr <Plug>VCSReview
+nmap <Leader>vs <Plug>VCSStatus
+nmap <Leader>vu <Plug>VCSUpdate
+nmap <Leader>vU <Plug>VCSUnlock
+nmap <Leader>vv <Plug>VCSVimDiff
 
 " NERDTreDTree********************************************************** {{{
 map <F10> :NERDTreeToggle<CR>
