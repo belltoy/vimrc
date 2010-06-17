@@ -41,15 +41,23 @@ snippet j.n
 snippet j.m
 	java.math.
 snippet if
-	if (${1}) ${2}
+	if (${1}) {
+		${2: //codes }
+	}
 snippet el
 	else 
 snippet elif
-	else if (${1}) ${2}
+	else if (${1}) {
+		${2: //codes }
+	}
 snippet wh
-	while (${1}) ${2}
+	while (${1}) {
+		${2: //codes }
+	}
 snippet for
-	for (${1}; ${2}; ${3}) ${4}
+	for (${1}; ${2}; ${3}) {
+		${4: //codes }
+	}
 snippet fore
 	for (${1} : ${2}) ${3}
 snippet sw
@@ -76,3 +84,11 @@ snippet cos
 	static public final String ${1:var} = "${2}";${3}
 snippet as
 	assert ${1:test} : "${2:Failure message}";${3}
+# add by belltoy
+snippet try
+	try {
+		${1}
+	}
+	catch (${2:Exception} e) {
+		${3: /* do something */}
+	}
