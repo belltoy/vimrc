@@ -105,9 +105,11 @@ nmap <silent> <Leader>, :nohlsearch<CR>
 
 " 缩排
 nmap <Tab> v>
-nmap <S-Tab> v<
-vmap <Tab> >gv 
-vmap <S-Tab> <gv 
+" nmap <S-Tab> v<
+nmap <bs> v<
+vmap <Tab> >gv
+" vmap <S-Tab> <gv
+vmap <bs> <gv
 
 " 插入模式下按F2插入时间戳
 imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
