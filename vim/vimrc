@@ -165,7 +165,7 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMouseMode=1
 
 " Set ignore file regex
-let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$']
+let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '^tags$']
 " }}}
 
 " Netrw ****************************************************************** {{{

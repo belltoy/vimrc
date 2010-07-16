@@ -17,3 +17,6 @@ autocmd BufNewFile,BufRead *.git/**
       \ if getline(1) =~ '^\x\{40\}\>\|^ref: ' |
       \   setf git |
       \ endif
+
+" Thrift
+autocmd BufNewFile,BufRead *.thrift     setf thrift
