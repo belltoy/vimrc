@@ -20,3 +20,12 @@ autocmd BufNewFile,BufRead *.git/**
 
 " Thrift
 autocmd BufNewFile,BufRead *.thrift     setf thrift
+
+" markdown filetype file
+if exists("did\_load\_filetypes")
+    finish
+endif
+
+augroup markdown
+    au! BufRead,BufNewFile *.mkd,*.md   setfiletype mkd
+augroup END

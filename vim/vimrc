@@ -288,6 +288,12 @@ let g:use_zen_complete_tag = 1
 let g:pydiction_location = '~/.vim/pydiction-1.2/complete-dict'
 " }}}
 
+" markdown filetype syntax ************************************************************** {{{
+augroup mkd
+    autocmd BufRead *.mkd,*.md  set ai formatoptions=tcroqn2 comments=n:&gt;
+augroup END
+" }}}
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function define
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
