@@ -113,6 +113,10 @@ vmap <Tab> >gv
 " vmap <S-Tab> <gv
 vmap <bs> <gv
 
+" 查找下一个匹配点
+nmap <C-n> :cn<CR>
+nmap <C-p> :cp<CR>
+
 " 插入模式下按F2插入时间戳
 imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
 
@@ -167,7 +171,7 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMouseMode=1
 
 " Set ignore file regex
-let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '^tags$']
+let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '\.lo$', '\.o$', '\.so$']
 " }}}
 
 " Netrw ****************************************************************** {{{
@@ -203,6 +207,7 @@ let Tlist_Sort_Type = "name"             " order:以tag名字在tag文件中出�
 "let Tlist_Use_Horiz_Window = 0
 let Tlist_Use_Right_Window = 1           " 1在右侧显示taglist窗口，0在左侧
 let Tlist_WinWidth = 40
+let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
 " }}}
 
 
@@ -290,9 +295,12 @@ let g:pydiction_location = '~/.vim/pydiction-1.2/complete-dict'
 
 " markdown filetype syntax ************************************************************** {{{
 augroup mkd
-    autocmd BufRead *.mkd,*.md  set ai formatoptions=tcroqn2 comments=n:&gt;
+    autocmd BufRead *.mkd,*.md,*.mdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 augroup END
 " }}}
+
+" jslint settings
+let g:JSLintHighlightErrorLine = 0
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function define
