@@ -302,6 +302,9 @@ augroup END
 " jslint settings
 let g:JSLintHighlightErrorLine = 0
 
+" Align settings
+let g:Align_xstrlen = 3 "handle multibyte characters :h align-strlen
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function define
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
