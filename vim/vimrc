@@ -42,7 +42,7 @@ set smartcase  " Ignore case when searching lowercase
 
 set nocompatible
 set nopaste
-set pastetoggle=<F11>
+set pastetoggle=<F3>
 set number            " 显示行号
 set autoindent        " 自动缩进
 set smartindent       " 智能缩进
