@@ -74,6 +74,7 @@
 :CVSWatchRemove	vcscommand.txt	/*:CVSWatchRemove*
 :CVSWatchers	vcscommand.txt	/*:CVSWatchers*
 :CommandT	command-t.txt	/*:CommandT*
+:CommandTBuffer	command-t.txt	/*:CommandTBuffer*
 :CommandTFlush	command-t.txt	/*:CommandTFlush*
 :FufAddBookmark	fuf.txt	/*:FufAddBookmark*
 :FufAddBookmarkAsSelectedText	fuf.txt	/*:FufAddBookmarkAsSelectedText*
