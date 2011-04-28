@@ -34,7 +34,8 @@ hi LineNr           term=underline      ctermfg=Yellow          guifg=Yellow
 hi MoreMsg          term=bold           ctermfg=LightGreen      gui=bold            guifg=SeaGreen
 hi NonText          term=bold           ctermfg=LightBlue       gui=bold            guifg=LightBlue guibg=grey30
 hi Question         term=standout       ctermfg=LightGreen      gui=bold            guifg=Green
-hi Search           term=reverse        ctermbg=Green           ctermfg=LightGray   guibg=Cyan      guifg=Black
+"hi Search           term=reverse        ctermbg=Green           ctermfg=LightGray   guibg=Cyan      guifg=Black
+hi Search           term=reverse        ctermbg=Cyan           ctermfg=Black   guibg=Cyan      guifg=Black
 hi SpecialKey       term=bold           ctermfg=LightBlue       guifg=Cyan
 hi Title            term=bold           ctermfg=LightMagenta    gui=bold            guifg=Magenta
 hi WarningMsg       term=standout       ctermfg=LightRed        guifg=Red
