@@ -79,17 +79,18 @@ filetype plugin indent on   " File stuff
 "let &t_SI = "\e]12;RoyalBlue1\007"
 "let &t_EI = "\e]12;Green2\007"
 "autocmd VimLeave * :!echo -ne "\e]12;grey\007"
-if &term =~ "xterm"
-    :silent !echo -ne "\e]12;LightGreen\007"
-    let &t_SI = "\e]12;RoyalBlue1\007"
-    let &t_EI = "\e]12;LightGreen\007"
-    autocmd VimLeave * :!echo -ne "\e]12;grey\007"
-elseif &term =~ "screen"    " screen in urxvt or xterm
-    :silent !echo -ne "\eP\e]12;LightGreen\007\e\\"
-    let &t_SI = "\eP\e]12;RoyalBlue1\007\e\\"
-    let &t_EI = "\eP\e]12;LightGreen\007\e\\"
-    autocmd VimLeave * :!echo -ne "\eP\e]12;grey\007\e\\"
-endif
+"
+"if &term =~ "xterm"
+"    :silent !echo -ne "\e]12;LightGreen\007"
+"    let &t_SI = "\e]12;RoyalBlue1\007"
+"    let &t_EI = "\e]12;LightGreen\007"
+"    autocmd VimLeave * :!echo -ne "\e]12;grey\007"
+"elseif &term =~ "screen"    " screen in urxvt or xterm
+"    :silent !echo -ne "\eP\e]12;LightGreen\007\e\\"
+"    let &t_SI = "\eP\e]12;RoyalBlue1\007\e\\"
+"    let &t_EI = "\eP\e]12;LightGreen\007\e\\"
+"    autocmd VimLeave * :!echo -ne "\eP\e]12;grey\007\e\\"
+"endif
 " }}}
 
 set directory=~/tmp/vim/swap    " Set Swap directory
@@ -139,7 +140,9 @@ nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
 
 " 插入模式下按F2插入时间戳
-imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+if exists("*strftime")
+    imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
+endif
 
 " }}}
 
@@ -272,6 +275,11 @@ nmap i<C-]> :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap d<C-]> :cs find d <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
+" SnipMate ************************************************************ {{{
+"ino <tab> <c-r>=TriggerSnippet()<cr>
+"snor <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
+" }}}
+
 " SnippetsEmu ************************************************************ {{{
 "imap <unique> <C-j> <Plug>Jumper
 "let g:snip_start_tag = "_\."
@@ -322,6 +330,7 @@ augroup END
 
 " jslint settings
 let g:JSLintHighlightErrorLine = 0
+let b:did_jslint_plugin = 1
 
 " Align settings
 let g:Align_xstrlen = 3 "handle multibyte characters :h align-strlen
