@@ -1,0 +1,30 @@
+[submodule "vim/bundle/command-t"]
+	path = vim/bundle/command-t
+	url = git://git.wincent.com/command-t.git
+[submodule "vim/bundle/nerdcommenter"]
+	path = vim/bundle/nerdcommenter
+	url = git://github.com/scrooloose/nerdcommenter.git
+[submodule "vim/bundle/NERD_commenter"]
+	path = vim/bundle/NERD_commenter
+	url = git://github.com/vimcn/NERD_commenter.git
+[submodule "vim/bundle/nerdtree"]
+	path = vim/bundle/nerdtree
+	url = git://github.com/scrooloose/nerdtree.git
+[submodule "vim/bundle/NERD_tree.vim"]
+	path = vim/bundle/NERD_tree.vim
+	url = git://github.com/vimcn/NERD_tree.vim.git
+[submodule "vim/bundle/snipmate.vim/"]
+    path = vim/bundle/snipmate.vim
+	url = git://github.com/msanders/snipmate.vim.git
+[submodule "vim/bundle/vcscommand/"]
+    path = vim/bundle/vcscommand
+	url = git://repo.or.cz/vcscommand
+[submodule "vim/bundle/vim-autoclose/"]
+    path = vim/bundle/vim-autoclose
+	url = git://github.com/Townk/vim-autoclose.git
+[submodule "vim/bundle/vim-bufexplorer/"]
+    path = vim/bundle/vim-bufexplorer
+	url = git://github.com/edsono/vim-bufexplorer.git
+[submodule "vim/bundle/vim-jade/"]
+    path = vim/bundle/vim-jade
+	url = git://github.com/digitaltoad/vim-jade.git
