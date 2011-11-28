@@ -19,8 +19,7 @@
 " |   ,v = new vertical window                                                |
 " |                                                                           |
 " |   ,i = toggle invisibles                                                  |
-" |                                                                           |
-" |   enter and shift-enter = adds a new line after/before the current line   |
+" |                                                                           | " |   enter and shift-enter = adds a new line after/before the current line   |
 " |                                                                           |
 " |   :call Tabstyle_tabs = set tab to real tabs                              |
 " |   :call Tabstyle_spaces = set tab to 2 spaces                             |
@@ -145,6 +144,8 @@ if exists("*strftime")
 endif
 
 " }}}
+" format json
+vmap <Leader>j !python -m json.tool<CR>
 
 
 " Omni Completion ******************************************************** {{{
@@ -162,6 +163,10 @@ autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+" pathogen
+call pathogen#infect()
+
 " VCSCommand ********************************************************** {{{
 " nmap ,ca <Plug>VCSAdd
 "
@@ -367,5 +372,4 @@ endif
 "if hostname() == "foo"
   " do something
 "endif
-
 "vim: fdm=marker
