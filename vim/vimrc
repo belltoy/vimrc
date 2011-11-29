@@ -68,6 +68,9 @@ set fileencodings=ucs-bom,utf-8,gbk,gb2312,default,latin1
 "set t_Co=256 " 256 colors
 set t_Co=16
 set background=dark 
+
+" pathogen
+call pathogen#infect()
 syntax on "syntax 的设置一定要在colo之前，不然colo就会无效
 colorscheme mine
 filetype plugin indent on   " File stuff
@@ -163,9 +166,6 @@ autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-" pathogen
-call pathogen#infect()
 
 " VCSCommand ********************************************************** {{{
 " nmap ,ca <Plug>VCSAdd
@@ -324,13 +324,13 @@ let g:use_zen_complete_tag = 1
 " }}}
 
 " pyditcion ************************************************************** {{{
-let g:pydiction_location = '~/.vim/pydiction-1.2/complete-dict'
+"let g:pydiction_location = '~/.vim/pydiction-1.2/complete-dict'
 " }}}
 
 " markdown filetype syntax ************************************************************** {{{
-augroup mkd
-    autocmd BufRead *.mkd,*.md,*.mdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-augroup END
+"augroup mkd
+"    autocmd BufRead *.mkd,*.md,*.mdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+"augroup END
 " }}}
 
 " jslint settings

@@ -22,13 +22,13 @@ autocmd BufNewFile,BufRead *.git/**
 autocmd BufNewFile,BufRead *.thrift     setf thrift
 
 " markdown filetype file
-if exists("did\_load\_filetypes")
-    finish
-endif
+"if exists("did\_load\_filetypes")
+"    finish
+"endif
 
-augroup markdown
-    au! BufRead,BufNewFile *.mkd,*.md   setfiletype mkd
-augroup END
+"augroup markdown
+"    au! BufRead,BufNewFile *.mkd,*.md   setfiletype mkd
+"augroup END
 
 " Vala Syntax support
 autocmd BufRead *.vala set efm=%f:%l.%c-%[%^:]%#:\ %t%[%^:]%#:\ %m
