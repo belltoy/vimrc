@@ -31,9 +31,6 @@
 [submodule "vim/bundle/vim-markdown"]
 	path = vim/bundle/vim-markdown
 	url = git://github.com/plasticboy/vim-markdown.git
-[submodule "vim/bundle/jslint.vim"]
-	path = vim/bundle/jslint.vim
-	url = git://github.com/hallettj/jslint.vim.git
 [submodule "vim/bundle/Pydiction"]
 	path = vim/bundle/Pydiction
 	url = git://github.com/vim-scripts/Pydiction.git
