@@ -9,8 +9,9 @@
 " |   jj = <esc>  Very useful for keeping your hands on the home row          |
 " |   ,n = toggle NERDTree off and on                                         |
 " |                                                                           |
-" |   ,f = fuzzy find all files                                               |
-" |   ,b = fuzzy find in all buffers                                          |
+" |  ",f = fuzzy find all files                                               |
+" |  ",b = fuzzy find in all buffers                                          |
+" |   ,f = toggle tag list window                                             |
 " |                                                                           |
 " |   hh = inserts '=>'                                                       |
 " |   aa = inserts '@'                                                        |
@@ -19,7 +20,9 @@
 " |   ,v = new vertical window                                                |
 " |                                                                           |
 " |   ,i = toggle invisibles                                                  |
-" |                                                                           | " |   enter and shift-enter = adds a new line after/before the current line   |
+" |   ,, = set nohlsearch                                                     |
+" |                                                                           |
+" |   enter and shift-enter = adds a new line after/before the current line   |
 " |                                                                           |
 " |   :call Tabstyle_tabs = set tab to real tabs                              |
 " |   :call Tabstyle_spaces = set tab to 2 spaces                             |
@@ -123,6 +126,10 @@ imap aa @
 imap <up> <C-o>gk
 imap <down> <C-o>gj
 imap .. ->
+map <S-Enter> O<Esc>
+map <CR> o<Esc>
+nmap <silent> <Leader>h :vsplit<CR>
+nmap <silent> <Leader>v :split<CR>
 
 " 选中后按/向后(?向前)直接搜索
 vmap / y/<C-R>"<CR>
@@ -339,6 +346,7 @@ let b:did_jslint_plugin = 1
 
 " Align settings
 let g:Align_xstrlen = 3 "handle multibyte characters :h align-strlen
+
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function define
