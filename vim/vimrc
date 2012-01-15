@@ -250,6 +250,7 @@ let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:functi
 " BufExplorer *********************************************************** {{{
 :command BE BufExplorer
 map <F5>  :BufExplorer<CR>
+map <silent> <Leader>b :FufBuffer<CR>
 let g:bufExplorerDefaultHelp=0       " Do not show default help.
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 let g:bufExplorerSortBy='mru'        " Sort by most recently used.
@@ -306,9 +307,9 @@ nmap d<C-]> :cs find d <C-R>=expand("<cword>")<CR><CR>
 "let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
 
 " FuzzyFinder
-map <silent> <Leader>b :FufBuffer<CR>
-map <silent> <Leader>ab :FufAddBookmark<CR>
-map <silent> <Leader>ob :FufBookmark<CR>
+"map <silent> <Leader>b :FufBuffer<CR>
+"map <silent> <Leader>ab :FufAddBookmark<CR>
+"map <silent> <Leader>ob :FufBookmark<CR>
 " }}}
 
 " autocomplpop *********************************************************** {{{
@@ -366,6 +367,7 @@ endfun
 " GUI Setting
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " See ~/.gvimrc
+source ~/.vim/gvimrc
 
 " load .vimrc in current directory
 set exrc

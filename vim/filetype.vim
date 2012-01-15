@@ -1,4 +1,4 @@
-au BufRead,BufNewFile /etc/nginx/* set ft=nginx
+au BufRead,BufNewFile /etc/nginx/*,*/etc/nginx/* set ft=nginx
 au BUfNewFile,BufRead *.conf setf conf
 au BufNewFile,BufRead /etc/apache2/*.conf,/etc/apache2/*/*  setf apache
 au BufNewFile,BufRead /etc/hosts  setf hostconf

@@ -8,9 +8,10 @@
 if has("gui_macvim")
 
 "  set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
-  set guifont=DejaVu\ Sans\ YuanTi\ Mono\ 10
-  set guioptions-=T "去除工具栏
-  set stal=2 " turn on tabs by default
+  set guifont=DejaVu\ Sans\ YuanTi\ Mono\:h13
+  set guioptions-=TLr "去除工具栏
+  "set stal=2 " turn on tabs by default
+  colorscheme ir_black
 
 elseif has("gui_gtk2")
 
@@ -30,8 +31,8 @@ set anti " Antialias font
 "set transparency=0
 
 " Default size of window
-set columns=9999
-set lines=999
+"set columns=9999
+"set lines=999
 
 " Tab headings 
 set gtl=%t gtt=%F
