@@ -74,7 +74,7 @@ endfunction
 
 set guitablabel=%{GuiTabLabel()}
 
-nmap <C-n> gt
-nmap <C-]> gt
-nmap <C-p> gT
-nmap <C-[> gT
+"nmap <C-n> gt
+"nmap <C-]> gt
+"nmap <C-p> gT
+"nmap <C-[> gT
