@@ -49,3 +49,6 @@
 [submodule "vim/bundle/lemon256"]
 	path = vim/bundle/lemon256
 	url = git://github.com/vim-scripts/lemon256.git
+[submodule "vim/bundle/Gist.vim"]
+	path = vim/bundle/Gist.vim
+	url = git://github.com/vim-scripts/Gist.vim.git
