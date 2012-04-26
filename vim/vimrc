@@ -216,11 +216,11 @@ let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '
 " }}}
 
 " Taglist *************************************************************** {{{
+let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
+
 "定义Tlist的快捷键为tl
 map <F8> :Tlist<CR><C-W><C-W>
 map <silent> <Leader>f :Tlist<CR><C-W><C-W>
-
-let Tlist_Ctags_Cmd = '/usr/bin/ctags'
 
 "let Tlist_Auto_Highlight_Tag = 1
 "let Tlist_Auto_Open = 1
