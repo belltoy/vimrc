@@ -13,9 +13,6 @@
 [submodule "vim/bundle/NERD_tree.vim"]
 	path = vim/bundle/NERD_tree.vim
 	url = git://github.com/vimcn/NERD_tree.vim.git
-[submodule "vim/bundle/snipmate.vim/"]
-    path = vim/bundle/snipmate.vim
-	url = git://github.com/msanders/snipmate.vim.git
 [submodule "vim/bundle/vcscommand/"]
     path = vim/bundle/vcscommand
 	url = git://repo.or.cz/vcscommand
