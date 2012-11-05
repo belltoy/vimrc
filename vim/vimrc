@@ -149,6 +149,8 @@ vmap <bs> <gv
 nmap <C-n> :cn<CR>
 nmap <C-p> :cp<CR>
 
+nmap <Leader>on :only<CR>
+
 " 插入模式下按F2插入时间戳
 if exists("*strftime")
     imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
@@ -157,6 +159,19 @@ endif
 " }}}
 " format json
 vmap <Leader>j !python -m json.tool<CR>
+
+" http://stackoverflow.com/questions/2147875/what-vim-commands-can-be-used-to-quote-unquote-words
+" Quote a word, using single quotes
+nmap <Leader>'s ciw'<C-R>"'<Esc>
+" Unquote a word that's enclosed in single quotes
+nmap <Leader>'S di'hPl2x
+" Quote a word, using double quotes
+nmap <Leader>"s ciw"<C-R>""<Esc>
+" Unquote a word that's enclosed in double quotes
+nmap <Leader>"S di"hPl2x
+" Change single quotes to double or reverse
+nmap <Leader>c' mpva':s/\%V'/"/g<CR>`p
+nmap <Leader>c" mpva":s/\%V"/'/g<CR>`p
 
 
 " Omni Completion ******************************************************** {{{
@@ -219,8 +234,11 @@ let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 
 "定义Tlist的快捷键为tl
-map <F8> :Tlist<CR><C-W><C-W>
-map <silent> <Leader>f :Tlist<CR><C-W><C-W>
+"map <F8> :Tlist<CR><C-W><C-W>
+"map <silent> <Leader>f :Tlist<CR><C-W><C-W>
+"Use TagBar
+map <F8> :TagbarToggle<CR><C-W><C-W>
+map <silent> <Leader>f :TagbarToggle<CR><C-W><C-W>
 
 "let Tlist_Auto_Highlight_Tag = 1
 "let Tlist_Auto_Open = 1
@@ -327,13 +345,14 @@ let g:acp_behaviorKeywordLength = 2
 " }}}
 
 " zen coding ************************************************************* {{{
-let g:user_zen_settings = { 'php' : { 'extends' : 'html', 'filters' : 'c', }, 'xml' : { 'extends' : 'html', } }
 "let g:user_zen_expandabbr_key = '<c-e>'
 let g:use_zen_complete_tag = 1
 let g:user_zen_settings = {
-\    'indentation' : '    ',
+\    'php' : { 'extends' : 'html', 'filters' : 'c', },
+\    'xml' : { 'extends' : 'html',},
+\    'indentation' : '  ',
 \    'html': {
-\        'indentation' : '  ',
+\        'indentation' : '    ',
 \    },
 \}
 " }}}
