@@ -2,10 +2,10 @@
 snippet Flow
 	Flow()
 	.seq(function(){
-		${2:/* code */}
+	    ${2:/* code */}
 	})
 	.catch(function(err){
-		${1:callback}(err);
+	    ${1:callback}(err);
 	});
 # Flow
 snippet Flowlist
@@ -15,83 +15,107 @@ snippet Flowlist
 	.seq(function(){
 	})
 	.catch(function(err){
-		${1:callback}(err);
+	    ${1:callback}(err);
 	});
 
 # Flow seq
 snippet fseq
 	.seq(function(${1:arg}){
-		${2}
+	    ${2}
 	})
 snippet fpar
 	.par(function(${1:arg}){
-		${2}
+	    ${2}
 	})
 snippet fparmap
 	.parMap(${1:2}, function(${2:item}){
-		${3}
+	    ${3}
 	})
 snippet fpareach
 	.parEach(${1:2}, function(${2:item}){
-		${3}
+	    ${3}
 	})
 
 # async
 snippet awf
 	async.waterfall([
 	    function(next){
-			${1}
-		}
+	        ${1}
+	    }
 	], function(err, ${2:result}){
-		${3}
+	    ${3}
+	});
+snippet aparao
+	async.parallel({
+	    ${1:one}: function(done){
+	        ${2}
+	    }
+	}, function(err, ${3:result}){
+	    ${4}
 	});
 snippet apara
-	async.parallel({
-		${1:one}: function(done){
-			${2}
-		}
+	async.parallel([
+	    function(done){
+	        ${1}
+	    }
+	], function(err, ${2:result}){
+	    ${3}
+	});
+snippet aseri
+	async.series([
+	    function(done){
+	        ${1}
+	    }
+	], function(err, ${2:result}){
+	    ${3}
+	});
+snippet aserio
+	async.series({
+	    ${1:one}: function(done){
+	        ${2}
+	    }
 	}, function(err, ${3:result}){
-		${4}
+	    ${4}
 	});
 snippet aeach
 	async.forEach(${1:arr}, function(${2:item}, done){
-		${3}
+	    ${3}
 	}, function(err){
-		${4}
+	    ${4}
 	});
 snippet aeachs
 	async.forEachSeries(${1:arr}, function(${2:item}, done){
-		${3}
+	    ${3}
 	}, function(err){
-		${4}
+	    ${4}
 	});
 snippet aeachl
 	async.forEachLimit(${1:arr}, ${2:5}, function(${3:item}, done){
-		${4}
+	    ${4}
 	}, function(err){
-		${5}
+	    ${5}
 	});
 snippet amap
 	async.map(${1:arr}, function(${2:item}, done){
-		${3}
+	    ${3}
 	}, function(err, ${4:result}){
-		${5}
+	    ${5}
 	});
 snippet amaps
 	async.mapSeries(${1:arr}, function(${2:item}, done){
-		${3}
+	    ${3}
 	}, function(err, ${4:result}){
-		${5}
+	    ${5}
 	});
 snippet afilter
 	async.filter(${1:arr}, function(${2:item}, done){
-		${3}
+	    ${3}
 	}, function(${4:result}){
-		${5}
+	    ${5}
 	});
 snippet afilters
 	async.filterSeries(${1:arr}, function(${2:item}, done){
-		${3}
+	    ${3}
 	}, function(${4:result}){
-		${5}
+	    ${5}
 	});

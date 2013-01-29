@@ -2,7 +2,7 @@ au BufRead,BufNewFile /etc/nginx/*,*/etc/nginx/* set ft=nginx
 au BUfNewFile,BufRead *.conf setf conf
 au BufNewFile,BufRead /etc/apache2/*.conf,/etc/apache2/*/*  setf apache
 au BufNewFile,BufRead /etc/hosts  setf hostconf
-au BufNewFile,BufRead *.json setf javascript
+au BufNewFile,BufRead *.json setf json
 au BufNewFile,BufRead /etc/fonts/*.conf,/etc/fonts/*/*  set ft=xml
 au BufNewFile,BufRead rebar.config,Emakefile,*.yrl,*.xrl set ft=erlang
 
