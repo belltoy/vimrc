@@ -102,6 +102,10 @@ filetype plugin indent on   " File stuff
 set directory=~/tmp/vim/swap    " Set Swap directory
 set nobk "关闭自动备份
 set cot=menuone ",preview  "全能补全的时候只显示菜单，preview预览窗口
+set undodir=~/tmp/vim/undo
+set undofile
+set undolevels=1000
+set undoreload=10000
 
 " Status Line ************************************************************ {{{
 set showcmd
@@ -197,6 +201,7 @@ autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 "
 nmap <Leader>va <Plug>VCSAdd
 nmap <Leader>vn <Plug>VCSAnnotate
+nmap <Leader>vb <Plug>VCSBlame
 nmap <Leader>vN <Plug>VCSAnnotate!
 nmap <Leader>vc <Plug>VCSCommit
 nmap <Leader>vD <Plug>VCSDelete
