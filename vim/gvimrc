@@ -24,7 +24,7 @@ elseif has("gui_win32")
 end
 
 set guioptions=agie
-set nocul
+"set nocul
 
 " General *********************************************************************
 set anti " Antialias font
