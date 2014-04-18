@@ -45,7 +45,7 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'tpope/vim-fugitive'
 Bundle 'digitaltoad/vim-jade'
-"Bundle 'maksimr/vim-jsbeautify'
+Bundle 'maksimr/vim-jsbeautify'
 Bundle 'groenewege/vim-less'
 Bundle 'jimenezrick/vimerl'
 "Bundle 'mattn/zencoding-vim'
@@ -54,7 +54,8 @@ Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
 Bundle 'scrooloose/snipmate-snippets'
 Bundle 'scrooloose/nerdtree'
-Bundle 'scrooloose/nerdcommenter'
+"Bundle 'scrooloose/nerdcommenter'
+Bundle 'tomtom/tcomment_vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kelan/gyp.vim'
 Bundle 'mustache/vim-mustache-handlebars'
@@ -65,6 +66,7 @@ Bundle 'elzr/vim-json'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomasr/molokai'
+Bundle 'plasticboy/vim-markdown'
 "Bundle 'rizzatti/funcoo.vim'
 "Bundle 'rizzatti/dash.vim'
 
@@ -220,6 +222,11 @@ nmap <Leader>"S di"hPl2x
 nmap <Leader>c' mpva':s/\%V'/"/g<CR>`p
 nmap <Leader>c" mpva":s/\%V"/'/g<CR>`p
 
+let g:erlangManPath="/usr/local/lib/erlang/man"
+" let $GROFF_NO_SGR=1
+source $VIMRUNTIME/ftplugin/man.vim
+" nmap K :Man <cword><CR><C-W>L
+" nmap K :call VimMan()<CR>
 
 " Omni Completion ******************************************************** {{{
 autocmd FileType html setlocal omnifunc=htmlcomplete#CompleteTags
