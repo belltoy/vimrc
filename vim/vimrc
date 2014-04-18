@@ -30,6 +30,41 @@
 " | Put machine/user specific settings in ~/.vimrc.local                      |
 " -----------------------------------------------------------------------------
 
+set nocompatible
+" Required Vundle setup
+filetype off
+set runtimepath+=~/.vim/bundle/vundle
+call vundle#rc()
+
+Bundle 'gmarik/vundle'
+
+Bundle 'bling/vim-airline'
+Bundle 'Townk/vim-autoclose'
+Bundle 'thisivan/vim-bufexplorer'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'elixir-lang/vim-elixir'
+Bundle 'tpope/vim-fugitive'
+Bundle 'digitaltoad/vim-jade'
+"Bundle 'maksimr/vim-jsbeautify'
+Bundle 'groenewege/vim-less'
+Bundle 'jimenezrick/vimerl'
+"Bundle 'mattn/zencoding-vim'
+Bundle 'vim-scripts/vcscommand.vim'
+Bundle 'godlygeek/tabular'
+Bundle 'majutsushi/tagbar'
+Bundle 'scrooloose/snipmate-snippets'
+Bundle 'scrooloose/nerdtree'
+Bundle 'scrooloose/nerdcommenter'
+Bundle 'mattn/gist-vim'
+Bundle 'kelan/gyp.vim'
+Bundle 'mustache/vim-mustache-handlebars'
+Bundle 'othree/html5.vim'
+Bundle 'altercation/vim-colors-solarized'
+Bundle 'msanders/snipmate.vim'
+Bundle 'elzr/vim-json'
+"Bundle 'rizzatti/funcoo.vim'
+"Bundle 'rizzatti/dash.vim'
+
 set ffs=unix
 
 "autocmd FileType java  source $HOME/.vim/files/myjava.vim
@@ -42,7 +77,6 @@ set ignorecase " Ignore case when searching
 set smartcase  " Ignore case when searching lowercase
 " }}}
 
-set nocompatible
 set nopaste
 set pastetoggle=<F3>
 set number            " 显示行号
@@ -69,12 +103,12 @@ set fileencodings=ucs-bom,utf-8,gbk,gb2312,default,latin1
 " }}}
 
 " Colors ***************************************************************** {{{
-"set t_Co=256 " 256 colors
-set t_Co=16
+set t_Co=256 " 256 colors
+"set t_Co=16
 set background=dark 
 
 " pathogen
-call pathogen#infect()
+"call pathogen#infect()
 syntax on "syntax 的设置一定要在colo之前，不然colo就会无效
 colorscheme mine
 filetype plugin indent on   " File stuff
@@ -379,6 +413,11 @@ let b:did_jslint_plugin = 1
 " Align settings
 let g:Align_xstrlen = 3 "handle multibyte characters :h align-strlen
 
+" Airline
+let g:airline_powerline_fonts=1
+set laststatus=2
+set ambiwidth=double
+"let g:Powerline_symbols = 'fancy'
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Function define
