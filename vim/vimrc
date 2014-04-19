@@ -69,6 +69,7 @@ Bundle 'tomasr/molokai'
 Bundle 'plasticboy/vim-markdown'
 "Bundle 'rizzatti/funcoo.vim'
 "Bundle 'rizzatti/dash.vim'
+Bundle 'asins/vimcdoc'
 
 set ffs=unix
 
