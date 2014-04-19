@@ -38,43 +38,6 @@ set anti " Antialias font
 " Tab headings 
 set gtl=%t gtt=%F
 
-function GuiTabLabel()
-  let label = ''
-  let bufnrlist = tabpagebuflist(v:lnum)
-
-  " 如果标签页里的窗口数目多于一，加上窗口数目
-  let labelnum = ''
-  let wincount = tabpagewinnr(v:lnum, '$')
-  if wincount > 1
-    let labelnum .= wincount
-  endif
-  if labelnum != ''
-    let labelnum = '[' . labelnum . ']'
-  endif
-
-  " 如果标签页里有修改过的缓冲区，加上 '+'
-  let is_labelmodified = ''
-  for bufnr in bufnrlist
-    if getbufvar(bufnr, "&modified")
-      let is_labelmodified = '*'
-      break
-    endif
-  endfor
-
-  let label = labelnum . is_labelmodified
-
-  if label != ''
-      let label = ' ' . label
-  endif
-
-  " 附加缓冲区名
-  let filename = bufname(bufnrlist[tabpagewinnr(v:lnum) - 1])
-  let shortname = fnamemodify(filename, ":t")
-  return v:lnum . ' ' . shortname . label
-endfunction
-
-set guitablabel=%{GuiTabLabel()}
-
 "nmap <C-n> gt
 "nmap <C-]> gt
 "nmap <C-p> gT
