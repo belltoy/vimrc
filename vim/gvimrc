@@ -12,7 +12,7 @@ if has("gui_macvim")
   set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h13
   set guioptions-=TLr "去除工具栏
   "set stal=2 " turn on tabs by default
-  colorscheme ir_black
+  " colorscheme ir_black
 
 elseif has("gui_gtk2")
 

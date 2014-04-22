@@ -38,6 +38,8 @@ call vundle#rc()
 
 Bundle 'gmarik/vundle'
 
+Bundle 'vim-scripts/L9'
+
 Bundle 'bling/vim-airline'
 Bundle 'Townk/vim-autoclose'
 Bundle 'thisivan/vim-bufexplorer'
@@ -52,7 +54,16 @@ Bundle 'jimenezrick/vimerl'
 Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
-Bundle 'scrooloose/snipmate-snippets'
+
+" snipmate
+Bundle "MarcWeber/vim-addon-mw-utils"
+Bundle "tomtom/tlib_vim"
+Bundle "garbas/vim-snipmate"
+" Optional:
+Bundle "honza/vim-snippets"
+
+" Bundle 'msanders/snipmate.vim'
+" Bundle 'scrooloose/snipmate-snippets'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
@@ -61,15 +72,27 @@ Bundle 'kelan/gyp.vim'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'othree/html5.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'msanders/snipmate.vim'
 Bundle 'elzr/vim-json'
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomasr/molokai'
 Bundle 'plasticboy/vim-markdown'
+" Bundle 'jaxbot/github-issues.vim'
 "Bundle 'rizzatti/funcoo.vim'
 "Bundle 'rizzatti/dash.vim'
 Bundle 'asins/vimcdoc'
+Bundle 'jceb/vim-orgmode'
+" Bundle 'dag/vim-fish'
+Bundle 'aliva/vim-fish'
+
+" instead of AutoComplPop
+" Bundle 'Shougo/neocomplcache.vim'
+" AutoComplPop
+Bundle 'othree/vim-autocomplpop'
+
+if $SHELL =~ 'bin/fish'
+    set shell=/bin/sh endif
+endif
 
 set ffs=unix
 
@@ -123,7 +146,29 @@ let g:solarized_visibility="high"
 syntax on "syntax 的设置一定要在colo之前，不然colo就会无效
 "colorscheme mine
 colorscheme solarized
+" colorscheme inkpot
+" hi CursorLine   cterm=NONE ctermbg=235
 filetype plugin indent on   " File stuff
+" }}}
+
+" detect filetype ******************************************************* {{{
+au BufRead,BufNewFile *.edc setlocal filetype=edc
+au BufRead,BufNewFile *.qml setlocal filetype=qml
+
+au BufRead,BufNewFile *.eco setlocal filetype=html
+
+au BufRead,BufNewFile sys.config setlocal ft=erlang
+au BufRead,BufNewFile rebar.config setlocal ft=erlang
+au BufRead,BufNewFile reltool.config setlocal ft=erlang
+au BufRead,BufNewFile vars.config setlocal ft=erlang
+au BufRead,BufNewFile *.src setlocal ft=erlang
+let erlang_folding = 1
+" }}}
+
+" markdown filetype syntax ************************************************************** {{{
+"augroup mkd
+"    autocmd BufRead *.mkd,*.md,*.mdown  set ai formatoptions=tcroqn2 comments=n:&gt;
+"augroup END
 " }}}
 
 " Cursor ***************************************************************** {{{
@@ -391,14 +436,16 @@ nmap d<C-]> :cs find d <C-R>=expand("<cword>")<CR><CR>
 " complete option
 set complete=.,w,b,u,t,k
 
-"let g:AutoComplPop_CompleteOption = '.,w,b,u,t,k'
-"let g:AutoComplPop_IgnoreCaseOption = 0
-"let g:AutoComplPop_BehaviorKeywordLength = 2
-
 let g:acp_completeOption = '.,w,b,u,t,k'
 let g:acp_ignorecaseOption = 0
 let g:acp_behaviorKeywordLength = 2
 " }}}
+
+" " Use neocomplcache. ***************************************************** {{{
+" let g:neocomplcache_enable_at_startup = 1
+" " Use smartcase.
+" let g:neocomplcache_enable_smart_case = 1
+" " }}}
 
 " zen coding ************************************************************* {{{
 "let g:user_zen_expandabbr_key = '<c-e>'
@@ -415,12 +462,6 @@ let g:user_zen_settings = {
 
 " pyditcion ************************************************************** {{{
 "let g:pydiction_location = '~/etc/vimrc/vim/bundle/Pydiction/complete-dict'
-" }}}
-
-" markdown filetype syntax ************************************************************** {{{
-"augroup mkd
-"    autocmd BufRead *.mkd,*.md,*.mdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-"augroup END
 " }}}
 
 " jslint settings
