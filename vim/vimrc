@@ -43,55 +43,63 @@ Bundle 'vim-scripts/L9'
 Bundle 'bling/vim-airline'
 Bundle 'Townk/vim-autoclose'
 Bundle 'thisivan/vim-bufexplorer'
-Bundle 'kchmck/vim-coffee-script'
-Bundle 'elixir-lang/vim-elixir'
 Bundle 'tpope/vim-fugitive'
-Bundle 'digitaltoad/vim-jade'
-Bundle 'maksimr/vim-jsbeautify'
-Bundle 'groenewege/vim-less'
-Bundle 'jimenezrick/vimerl'
 "Bundle 'mattn/zencoding-vim'
 Bundle 'vim-scripts/vcscommand.vim'
 Bundle 'godlygeek/tabular'
 Bundle 'majutsushi/tagbar'
 
-" snipmate
-Bundle "MarcWeber/vim-addon-mw-utils"
-Bundle "tomtom/tlib_vim"
-Bundle "garbas/vim-snipmate"
-" Optional:
-Bundle "honza/vim-snippets"
-
-" Bundle 'msanders/snipmate.vim'
-" Bundle 'scrooloose/snipmate-snippets'
 Bundle 'scrooloose/nerdtree'
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kelan/gyp.vim'
 Bundle 'mustache/vim-mustache-handlebars'
-Bundle 'othree/html5.vim'
 Bundle 'altercation/vim-colors-solarized'
-Bundle 'elzr/vim-json'
-Bundle 'jnwhiteh/vim-golang'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomasr/molokai'
-Bundle 'plasticboy/vim-markdown'
 " Bundle 'jaxbot/github-issues.vim'
 "Bundle 'rizzatti/funcoo.vim'
 "Bundle 'rizzatti/dash.vim'
 Bundle 'asins/vimcdoc'
-Bundle 'jceb/vim-orgmode'
-" Bundle 'dag/vim-fish'
-Bundle 'aliva/vim-fish'
 
 " instead of AutoComplPop
 " Bundle 'Shougo/neocomplcache.vim'
 " AutoComplPop
 Bundle 'othree/vim-autocomplpop'
 
+" snipmate
+" VimL only
+" Bundle 'MarcWeber/vim-addon-mw-utils'
+" Bundle 'tomtom/tlib_vim'
+" Bundle 'garbas/vim-snipmate'
+
+" ultisnips need python support
+Bundle 'SirVer/ultisnips'
+let g:UltiSnipsExpandTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" Optional:
+Bundle 'honza/vim-snippets'
+
+" Language syntax support
+Bundle 'jceb/vim-orgmode'
+Bundle 'plasticboy/vim-markdown'
+Bundle 'elzr/vim-json'
+Bundle 'jnwhiteh/vim-golang'
+Bundle 'othree/html5.vim'
+Bundle 'aliva/vim-fish'
+Bundle 'digitaltoad/vim-jade'
+Bundle 'maksimr/vim-jsbeautify'
+Bundle 'groenewege/vim-less'
+Bundle 'jimenezrick/vimerl'
+Bundle 'kchmck/vim-coffee-script'
+Bundle 'elixir-lang/vim-elixir'
+
+" set compatible
+
 if $SHELL =~ 'bin/fish'
-    set shell=/bin/sh endif
+    set shell=/bin/bash
 endif
 
 set ffs=unix
@@ -232,13 +240,15 @@ vmap / y/<C-R>"<CR>
 vmap ? y?<C-R>"<CR>
 nmap <silent> <Leader>, :nohlsearch<CR>
 
-" 缩排
-nmap <Tab> v>
+" Shift
+nmap > v><Esc>
 " nmap <S-Tab> v<
-nmap <bs> v<
-vmap <Tab> >gv
+" nmap <bs> v<
+nmap < v<<Esc>
+vmap > >gv
 " vmap <S-Tab> <gv
-vmap <bs> <gv
+" vmap <bs> <gv
+vmap < <gv
 
 " 查找下一个匹配点
 nmap <C-n> :cn<CR>
@@ -406,30 +416,6 @@ nmap e<C-]> :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap f<C-]> :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap i<C-]> :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap d<C-]> :cs find d <C-R>=expand("<cword>")<CR><CR>
-" }}}
-
-" SnipMate ************************************************************ {{{
-"ino <tab> <c-r>=TriggerSnippet()<cr>
-"snor <tab> <esc>i<right><c-r>=TriggerSnippet()<cr>
-" }}}
-
-" SnippetsEmu ************************************************************ {{{
-"imap <unique> <C-j> <Plug>Jumper
-"let g:snip_start_tag = "_\."
-"let g:snip_end_tag = "\._"
-"let g:snip_elem_delim = ":"
-"let g:snip_set_textmate_cp = '1'  " Tab to expand snippets, not automatically.
-" }}}
-
-
-" fuzzyfinder_textmate *************************************************** {{{
-"map ,f :FuzzyFinderTextMate<CR>
-"let g:fuzzy_ignore = '.o;.obj;.bak;.exe;.pyc;.pyo;.DS_Store;.db'
-
-" FuzzyFinder
-"map <silent> <Leader>b :FufBuffer<CR>
-"map <silent> <Leader>ab :FufAddBookmark<CR>
-"map <silent> <Leader>ob :FufBookmark<CR>
 " }}}
 
 " autocomplpop *********************************************************** {{{
