@@ -40,32 +40,33 @@ Bundle 'gmarik/vundle'
 Bundle 'vim-scripts/L9'
 
 Bundle 'bling/vim-airline'
-Bundle 'Townk/vim-autoclose'
 Bundle 'thisivan/vim-bufexplorer'
 Bundle 'tpope/vim-fugitive'
-"Bundle 'mattn/zencoding-vim'
+Bundle 'mattn/emmet-vim'
 Bundle 'vim-scripts/vcscommand.vim'
-Bundle 'godlygeek/tabular'
+" Bundle 'godlygeek/tabular'
+
+Bundle 'junegunn/vim-easy-align'
+
 Bundle 'majutsushi/tagbar'
 
 Bundle 'scrooloose/nerdtree'
+Bundle 'jistr/vim-nerdtree-tabs'
 "Bundle 'scrooloose/nerdcommenter'
 Bundle 'tomtom/tcomment_vim'
 Bundle 'mattn/gist-vim'
 Bundle 'kelan/gyp.vim'
 Bundle 'mustache/vim-mustache-handlebars'
 Bundle 'altercation/vim-colors-solarized'
+Bundle 'tomasr/molokai'
 Bundle 'kien/ctrlp.vim'
 Bundle 'tomasr/molokai'
 " Bundle 'jaxbot/github-issues.vim'
 "Bundle 'rizzatti/funcoo.vim'
 "Bundle 'rizzatti/dash.vim'
 Bundle 'asins/vimcdoc'
-
-" instead of AutoComplPop
-" Bundle 'Shougo/neocomplcache.vim'
-" AutoComplPop
-Bundle 'othree/vim-autocomplpop'
+Bundle 'terryma/vim-multiple-cursors'
+Bundle 'Raimondi/delimitMate'
 
 " snipmate
 " VimL only
@@ -80,6 +81,12 @@ let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Optional:
 Bundle 'honza/vim-snippets'
+
+" instead of AutoComplPop
+Bundle 'Shougo/neocomplete.vim'
+let g:neocomplete#enable_at_startup = 1
+let g:neocomplete#enable_auto_select = 1
+let g:neocomplete#enable_smart_case = 1
 
 " Language syntax support
 Bundle 'jceb/vim-orgmode'
@@ -102,9 +109,6 @@ if $SHELL =~ 'bin/fish'
 endif
 
 set ffs=unix
-
-"autocmd FileType java  source $HOME/.vim/files/myjava.vim
-"autocmd FileType php   source $HOME/.vim/files/myphp.vim
 
 " Searching ************************************************************** {{{
 set hlsearch   " highlight search
@@ -143,18 +147,22 @@ set fileencodings=ucs-bom,utf-8,gbk,gb2312,default,latin1
 set t_Co=256 " 256 colors
 "set t_Co=16
 set background=dark 
-let g:solarized_termcolors=256
-let g:solarized_termtrans=1
-let g:solarized_contrast="high"
-let g:solarized_visibility="high"
 
-" pathogen
-"call pathogen#infect()
 syntax on "syntax 的设置一定要在colo之前，不然colo就会无效
 "colorscheme mine
-colorscheme solarized
+" colorscheme solarized
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1
+" let g:solarized_contrast="high"
+" let g:solarized_visibility="high"
+
+let g:molokai_original = 1
+let g:rehash256 = 1
+colorscheme molokai
+
 " colorscheme inkpot
 " hi CursorLine   cterm=NONE ctermbg=235
+hi LineNr ctermbg=NONE
 filetype plugin indent on   " File stuff
 " }}}
 
@@ -176,25 +184,6 @@ let erlang_folding = 1
 "augroup mkd
 "    autocmd BufRead *.mkd,*.md,*.mdown  set ai formatoptions=tcroqn2 comments=n:&gt;
 "augroup END
-" }}}
-
-" Cursor ***************************************************************** {{{
-":silent !echo -ne "\e]12;Green2\007"
-"let &t_SI = "\e]12;RoyalBlue1\007"
-"let &t_EI = "\e]12;Green2\007"
-"autocmd VimLeave * :!echo -ne "\e]12;grey\007"
-"
-"if &term =~ "xterm"
-"    :silent !echo -ne "\e]12;LightGreen\007"
-"    let &t_SI = "\e]12;RoyalBlue1\007"
-"    let &t_EI = "\e]12;LightGreen\007"
-"    autocmd VimLeave * :!echo -ne "\e]12;grey\007"
-"elseif &term =~ "screen"    " screen in urxvt or xterm
-"    :silent !echo -ne "\eP\e]12;LightGreen\007\e\\"
-"    let &t_SI = "\eP\e]12;RoyalBlue1\007\e\\"
-"    let &t_EI = "\eP\e]12;LightGreen\007\e\\"
-"    autocmd VimLeave * :!echo -ne "\eP\e]12;grey\007\e\\"
-"endif
 " }}}
 
 set directory=~/tmp/vim/swap    " Set Swap directory
@@ -255,12 +244,8 @@ nmap <C-p> :cp<CR>
 
 nmap <Leader>on :only<CR>
 
-" 插入模式下按F2插入时间戳
-if exists("*strftime")
-    imap <F2> <C-R>=strftime("%Y-%m-%d %H:%M:%S")<CR>
-endif
-
 " }}}
+
 " format json
 vmap <Leader>j !python -m json.tool<CR>
 
@@ -298,6 +283,10 @@ autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 "=> Plugin configuration
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" Start interactive EasyAlign in visual mode
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign with a Vim movement
+nmap <Leader>a <Plug>(EasyAlign)
 
 " VCSCommand ********************************************************** {{{
 " nmap ,ca <Plug>VCSAdd
@@ -323,8 +312,9 @@ nmap <Leader>vU <Plug>VCSUnlock
 nmap <Leader>vv <Plug>VCSVimDiff
 
 " NERDTreDTree********************************************************** {{{
-map <F10> :NERDTreeToggle<CR>
-noremap <silent> <Leader>n :NERDTreeToggle<CR>
+" map <F10> :NERDTreeToggle<CR>
+" noremap <silent> <Leader>n :NERDTreeToggle<CR>
+map <Leader>n <plug>NERDTreeTabsToggle<CR>
 
 " User instead of Netrw when doing an edit /foobar
 let NERDTreeHijackNetrw=1
@@ -426,55 +416,15 @@ let g:acp_ignorecaseOption = 0
 let g:acp_behaviorKeywordLength = 2
 " }}}
 
-" " Use neocomplcache. ***************************************************** {{{
-" let g:neocomplcache_enable_at_startup = 1
-" " Use smartcase.
-" let g:neocomplcache_enable_smart_case = 1
-" " }}}
-
-" zen coding ************************************************************* {{{
-"let g:user_zen_expandabbr_key = '<c-e>'
-let g:use_zen_complete_tag = 1
-let g:user_zen_settings = {
-\    'php' : { 'extends' : 'html', 'filters' : 'c', },
-\    'xml' : { 'extends' : 'html',},
-\    'indentation' : '  ',
-\    'html': {
-\        'indentation' : '    ',
-\    },
-\}
-" }}}
-
 " pyditcion ************************************************************** {{{
 "let g:pydiction_location = '~/etc/vimrc/vim/bundle/Pydiction/complete-dict'
 " }}}
-
-" jslint settings
-let g:JSLintHighlightErrorLine = 0
-let b:did_jslint_plugin = 1
-
-" Align settings
-let g:Align_xstrlen = 3 "handle multibyte characters :h align-strlen
 
 " Airline
 let g:airline_powerline_fonts=1
 set laststatus=2
 set ambiwidth=double
 "let g:Powerline_symbols = 'fancy'
-
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" Function define
-"""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 在保存时自动修改Last modified的时间
-"autocmd BufWritePre,FileWritePre * ks|call LastModified()|'s
-fun! LastModified()
-    let l = line("$")
-    exe "1," . l . 'g/^\s*\(\*\|#\|"\|\/\/\)\?\s*[L]ast modified:\s/s/^\(\s*\(\*\|#\|"\|\/\/\)\?\s*[L]ast modified:\s\).*/\1' .
-                \ strftime("%Y-%m-%d %H:%M%S")
-"    \ strftime("%F %T")
-"    \ strftime("%Y %b %d %X")
-
-endfun
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI Setting
@@ -492,7 +442,4 @@ if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
 
-"if hostname() == "foo"
-  " do something
-"endif
 "vim: fdm=marker
