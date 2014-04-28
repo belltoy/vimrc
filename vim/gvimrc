@@ -23,6 +23,7 @@ elseif has("x11")
 elseif has("gui_win32")
 end
 
+set background=dark 
 set guioptions=agie
 "set nocul
 
