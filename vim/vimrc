@@ -102,6 +102,7 @@ Bundle 'groenewege/vim-less'
 Bundle 'jimenezrick/vimerl'
 Bundle 'kchmck/vim-coffee-script'
 Bundle 'elixir-lang/vim-elixir'
+Bundle 'carlosgaldino/elixir-snippets'
 Bundle 'kelan/gyp.vim'
 
 " set compatible
