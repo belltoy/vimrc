@@ -83,9 +83,16 @@ Bundle 'honza/vim-snippets'
 
 " instead of AutoComplPop
 Bundle 'Shougo/neocomplete.vim'
+" Disable AutoComplPop.
+let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_auto_select = 1
 let g:neocomplete#enable_smart_case = 1
+ if !exists('g:neocomplete#sources#omni#input_patterns')
+	  let g:neocomplete#sources#omni#input_patterns = {}
+endif
+let g:neocomplete#sources#omni#input_patterns.python = ''
+let g:neocomplete#sources#omni#input_patterns.ruby = ''
 
 " Language syntax support
 " Bundle 'jceb/vim-orgmode'
@@ -265,7 +272,7 @@ nmap <Leader>c" mpva":s/\%V"/'/g<CR>`p
 
 let g:erlangManPath="/usr/local/lib/erlang/man"
 " let $GROFF_NO_SGR=1
-source $VIMRUNTIME/ftplugin/man.vim
+" source $VIMRUNTIME/ftplugin/man.vim
 " nmap K :Man <cword><CR><C-W>L
 " nmap K :call VimMan()<CR>
 
@@ -412,9 +419,9 @@ nmap d<C-]> :cs find d <C-R>=expand("<cword>")<CR><CR>
 " complete option
 set complete=.,w,b,u,t,k
 
-let g:acp_completeOption = '.,w,b,u,t,k'
-let g:acp_ignorecaseOption = 0
-let g:acp_behaviorKeywordLength = 2
+" let g:acp_completeOption = '.,w,b,u,t,k'
+" let g:acp_ignorecaseOption = 0
+" let g:acp_behaviorKeywordLength = 2
 " }}}
 
 " pyditcion ************************************************************** {{{
