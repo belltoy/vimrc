@@ -96,9 +96,11 @@ let g:neocomplete#sources#omni#input_patterns.ruby = ''
 
 " Language syntax support
 " Bundle 'jceb/vim-orgmode'
+Bundle 'hdima/python-syntax'
+let python_highlight_all = 1
 Bundle 'plasticboy/vim-markdown'
 Bundle 'elzr/vim-json'
-" let g:vim_json_syntax_conceal = 0
+let g:vim_json_syntax_conceal = 0
 Bundle 'jnwhiteh/vim-golang'
 Bundle 'othree/html5.vim'
 Bundle 'aliva/vim-fish'
@@ -110,6 +112,9 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'carlosgaldino/elixir-snippets'
 Bundle 'kelan/gyp.vim'
+if !has("gui_macvim")
+    Bundle 'editorconfig/editorconfig-vim'
+end
 
 " set compatible
 
