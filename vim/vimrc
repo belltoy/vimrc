@@ -112,9 +112,9 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'carlosgaldino/elixir-snippets'
 Bundle 'kelan/gyp.vim'
-if !has("gui_macvim")
-    Bundle 'editorconfig/editorconfig-vim'
-end
+
+" Maybe Conflict with SirVer/ultisnips
+Bundle 'editorconfig/editorconfig-vim'
 
 " set compatible
 
