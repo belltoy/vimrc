@@ -112,6 +112,10 @@ Bundle 'kchmck/vim-coffee-script'
 Bundle 'elixir-lang/vim-elixir'
 Bundle 'carlosgaldino/elixir-snippets'
 Bundle 'kelan/gyp.vim'
+Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'scrooloose/syntastic'
+Bundle 'edkolev/tmuxline.vim'
+Bundle 'edkolev/promptline.vim'
 
 " Maybe Conflict with SirVer/ultisnips
 Bundle 'editorconfig/editorconfig-vim'
