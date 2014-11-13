@@ -450,6 +450,7 @@ set ambiwidth=double
 " Better :sign interface symbols
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
+let g:syntastic_javascript_jshint_config = '.jshintrc'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " GUI Setting
