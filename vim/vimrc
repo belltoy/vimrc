@@ -101,7 +101,8 @@ let python_highlight_all = 1
 Bundle 'plasticboy/vim-markdown'
 Bundle 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
-Bundle 'jnwhiteh/vim-golang'
+Bundle 'fatih/vim-go'
+Bundle 'belltoy/vim-protobuf'
 Bundle 'othree/html5.vim'
 Bundle 'aliva/vim-fish'
 Bundle 'digitaltoad/vim-jade'
