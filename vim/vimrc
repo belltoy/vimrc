@@ -114,6 +114,7 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'carlosgaldino/elixir-snippets'
 Bundle 'kelan/gyp.vim'
 Bundle 'ekalinin/Dockerfile.vim'
+Bundle 'wting/rust.vim'
 Bundle 'scrooloose/syntastic'
 Bundle 'edkolev/promptline.vim'
 Bundle 'mileszs/ack.vim'
@@ -198,12 +199,6 @@ au BufRead,BufNewFile reltool.config setlocal ft=erlang
 au BufRead,BufNewFile vars.config setlocal ft=erlang
 au BufRead,BufNewFile *.src setlocal ft=erlang
 let erlang_folding = 1
-" }}}
-
-" markdown filetype syntax ************************************************************** {{{
-"augroup mkd
-"    autocmd BufRead *.mkd,*.md,*.mdown  set ai formatoptions=tcroqn2 comments=n:&gt;
-"augroup END
 " }}}
 
 set directory=~/tmp/vim/swap    " Set Swap directory
