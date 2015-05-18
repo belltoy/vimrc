@@ -114,7 +114,7 @@ Bundle 'elixir-lang/vim-elixir'
 Bundle 'carlosgaldino/elixir-snippets'
 Bundle 'kelan/gyp.vim'
 Bundle 'ekalinin/Dockerfile.vim'
-Bundle 'wting/rust.vim'
+Bundle 'rust-lang/rust.vim'
 Bundle 'cespare/vim-toml'
 Bundle 'scrooloose/syntastic'
 Bundle 'edkolev/promptline.vim'
@@ -331,6 +331,7 @@ nmap <Leader>vv <Plug>VCSVimDiff
 " map <F10> :NERDTreeToggle<CR>
 " noremap <silent> <Leader>n :NERDTreeToggle<CR>
 map <Leader>n <plug>NERDTreeTabsToggle<CR>
+let g:nerdtree_tabs_open_on_gui_startup = 0
 
 " User instead of Netrw when doing an edit /foobar
 let NERDTreeHijackNetrw=1
@@ -446,6 +447,7 @@ set ambiwidth=double
 " Better :sign interface symbols
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'
+let g:syntastic_javascript_checkers = ['jshint', 'jscs']
 let g:syntastic_javascript_jshint_config = '.jshintrc'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
