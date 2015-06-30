@@ -33,9 +33,9 @@ set nocompatible
 " Required Vundle setup
 filetype off
 set runtimepath+=~/.vim/bundle/vundle
-call vundle#rc()
+call vundle#begin()
 
-Plugin 'gmarik/vundle'
+Plugin 'gmarik/Vundle.vim'
 
 Plugin 'vim-scripts/L9'
 
@@ -60,11 +60,17 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'altercation/vim-colors-solarized'
 Plugin 'tomasr/molokai'
 Plugin 'kien/ctrlp.vim'
+let g:ctrlp_map = '<Leader>t'
 " Plugin 'jaxbot/github-issues.vim'
 "Plugin 'rizzatti/funcoo.vim'
 "Plugin 'rizzatti/dash.vim'
 Plugin 'asins/vimcdoc'
 Plugin 'terryma/vim-multiple-cursors'
+" Default mapping
+let g:multi_cursor_next_key='<C-n>'
+let g:multi_cursor_prev_key='<C-p>'
+let g:multi_cursor_skip_key='<C-x>'
+let g:multi_cursor_quit_key='<Esc>'
 Plugin 'Raimondi/delimitMate'
 
 " snipmate
@@ -127,6 +133,12 @@ Plugin 'einars/js-beautify'
 
 " Maybe Conflict with SirVer/ultisnips
 Plugin 'editorconfig/editorconfig-vim'
+
+" All of your Plugins must be added before the following line
+call vundle#end()            " required
+filetype plugin indent on    " required
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
 
 " set compatible
 
@@ -258,8 +270,8 @@ vmap > >gv
 vmap < <gv
 
 " 查找下一个匹配点
-nmap <C-n> :cn<CR>
-nmap <C-p> :cp<CR>
+" nmap <C-n> :cn<CR>
+" nmap <C-p> :cp<CR>
 
 nmap <Leader>on :only<CR>
 
