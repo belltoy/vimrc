@@ -28,7 +28,9 @@ set guioptions=agie
 "set nocul
 
 " General *********************************************************************
-set anti " Antialias font
+if !has('nvim')
+  set anti " Antialias font
+endif
 
 "set transparency=0
 
