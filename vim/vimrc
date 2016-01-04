@@ -30,76 +30,74 @@
 " -----------------------------------------------------------------------------
 
 set nocompatible
-" Required Vundle setup
-filetype off
-set runtimepath+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
+call plug#begin('~/.vim/bundle')
 
-Plugin 'gmarik/Vundle.vim'
+Plug 'vim-scripts/L9'
 
-Plugin 'vim-scripts/L9'
-
-Plugin 'bling/vim-airline'
-Plugin 'edkolev/tmuxline.vim'
-Plugin 'edkolev/promptline.vim'
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/promptline.vim'
 let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#promptline#enabled = 0
-Plugin 'thisivan/vim-bufexplorer'
-Plugin 'tmux-plugins/vim-tmux'
-Plugin 'tpope/vim-fugitive'
-Plugin 'mattn/emmet-vim'
-Plugin 'vim-scripts/vcscommand.vim'
-Plugin 'airblade/vim-gitgutter'
-Plugin 'mattn/gist-vim'
-" Plugin 'godlygeek/tabular'
-Plugin 'tpope/vim-surround'
-Plugin 'junegunn/fzf.vim'
+Plug 'thisivan/vim-bufexplorer'
+Plug 'tmux-plugins/vim-tmux'
+Plug 'tpope/vim-fugitive'
+Plug 'mattn/emmet-vim'
+Plug 'vim-scripts/vcscommand.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'mattn/gist-vim'
+" Plug 'godlygeek/tabular'
+Plug 'tpope/vim-surround'
 
-Plugin 'junegunn/vim-easy-align'
+" FZF
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
-Plugin 'majutsushi/tagbar'
+Plug 'junegunn/vim-easy-align'
 
-Plugin 'scrooloose/nerdtree'
-Plugin 'jistr/vim-nerdtree-tabs'
-"Plugin 'scrooloose/nerdcommenter'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'altercation/vim-colors-solarized'
-Plugin 'tomasr/molokai'
-Plugin 'kien/ctrlp.vim'
+Plug 'majutsushi/tagbar'
+
+Plug 'scrooloose/nerdtree'
+Plug 'jistr/vim-nerdtree-tabs'
+"Plug 'scrooloose/nerdcommenter'
+Plug 'tomtom/tcomment_vim'
+Plug 'mustache/vim-mustache-handlebars'
+Plug 'altercation/vim-colors-solarized'
+Plug 'tomasr/molokai'
+Plug 'kien/ctrlp.vim'
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = {
     \ 'file': '\v(\.beam)$'
     \ }
-" Plugin 'jaxbot/github-issues.vim'
-"Plugin 'rizzatti/funcoo.vim'
-"Plugin 'rizzatti/dash.vim'
-Plugin 'asins/vimcdoc'
-Plugin 'terryma/vim-multiple-cursors'
+" Plug 'jaxbot/github-issues.vim'
+"Plug 'rizzatti/funcoo.vim'
+"Plug 'rizzatti/dash.vim'
+Plug 'asins/vimcdoc'
+Plug 'terryma/vim-multiple-cursors'
 " Default mapping
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
-Plugin 'Raimondi/delimitMate'
+Plug 'Raimondi/delimitMate'
 
 " snipmate
 " VimL only
-" Plugin 'MarcWeber/vim-addon-mw-utils'
-" Plugin 'tomtom/tlib_vim'
-" Plugin 'garbas/vim-snipmate'
+" Plug 'MarcWeber/vim-addon-mw-utils'
+" Plug 'tomtom/tlib_vim'
+" Plug 'garbas/vim-snipmate'
 
 " ultisnips need python support
-Plugin 'SirVer/ultisnips'
+Plug 'SirVer/ultisnips'
 let g:UltiSnipsExpandTrigger="<tab>"
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Optional:
-Plugin 'honza/vim-snippets'
+Plug 'honza/vim-snippets'
 
 " instead of AutoComplPop
-Plugin 'Shougo/neocomplete.vim'
+Plug 'Shougo/neocomplete.vim'
 " Disable AutoComplPop.
 let g:acp_enableAtStartup = 0
 let g:neocomplete#enable_at_startup = 1
@@ -120,42 +118,42 @@ let g:neocomplete#sources#omni#input_patterns.ruby = ''
 " endfunction
 
 " Language syntax support
-" Plugin 'jceb/vim-orgmode'
-Plugin 'hdima/python-syntax'
+" Plug 'jceb/vim-orgmode'
+Plug 'hdima/python-syntax'
 let python_highlight_all = 1
-Plugin 'plasticboy/vim-markdown'
-Plugin 'elzr/vim-json'
+Plug 'plasticboy/vim-markdown'
+Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
-Plugin 'fatih/vim-go'
+Plug 'fatih/vim-go'
 let g:go_fmt_autosave = 0
 let g:go_bin_path = expand("~/.gotools")
-Plugin 'belltoy/vim-protobuf'
-Plugin 'othree/html5.vim'
-Plugin 'aliva/vim-fish'
-Plugin 'digitaltoad/vim-jade'
-Plugin 'maksimr/vim-jsbeautify'
-Plugin 'groenewege/vim-less'
-Plugin 'jimenezrick/vimerl'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'elixir-lang/vim-elixir'
-" Plugin 'carlosgaldino/elixir-snippets'
-Plugin 'kelan/gyp.vim'
-Plugin 'ekalinin/Dockerfile.vim'
-Plugin 'rust-lang/rust.vim'
-Plugin 'cespare/vim-toml'
-Plugin 'benekastah/neomake'
-Plugin 'mileszs/ack.vim'
-Plugin 'bronson/vim-trailing-whitespace'
-Plugin 'pangloss/vim-javascript'
-Plugin 'othree/yajs.vim'
-Plugin 'einars/js-beautify'
-" Plugin 'Lokaltog/vim-easymotion'
-Plugin 'guns/vim-clojure-static'
-Plugin 'tpope/vim-fireplace'
-Plugin 'kien/rainbow_parentheses.vim'
-Plugin 'guns/vim-clojure-highlight'
-Plugin 'vim-scripts/paredit.vim'
-Plugin 'derekwyatt/vim-scala'
+Plug 'belltoy/vim-protobuf'
+Plug 'othree/html5.vim'
+Plug 'aliva/vim-fish'
+Plug 'digitaltoad/vim-jade'
+Plug 'maksimr/vim-jsbeautify'
+Plug 'groenewege/vim-less'
+Plug 'jimenezrick/vimerl'
+Plug 'kchmck/vim-coffee-script'
+Plug 'elixir-lang/vim-elixir'
+" Plug 'carlosgaldino/elixir-snippets'
+Plug 'kelan/gyp.vim'
+Plug 'ekalinin/Dockerfile.vim'
+Plug 'rust-lang/rust.vim'
+Plug 'cespare/vim-toml'
+Plug 'benekastah/neomake'
+Plug 'mileszs/ack.vim'
+Plug 'bronson/vim-trailing-whitespace'
+Plug 'pangloss/vim-javascript'
+Plug 'othree/yajs.vim'
+Plug 'einars/js-beautify'
+" Plug 'Lokaltog/vim-easymotion'
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-fireplace'
+Plug 'kien/rainbow_parentheses.vim'
+Plug 'guns/vim-clojure-highlight'
+Plug 'vim-scripts/paredit.vim'
+Plug 'derekwyatt/vim-scala'
 
 let g:clojure_syntax_keywords = {
     \ 'clojureMacro': ["defproject", "defcustom"],
@@ -184,15 +182,11 @@ let g:rbpt_loadcmd_toggle = 0
 let g:rainbow_active = 1
 
 " Maybe Conflict with SirVer/ultisnips
-Plugin 'editorconfig/editorconfig-vim'
+Plug 'editorconfig/editorconfig-vim'
 
-Plugin 'mxw/vim-jsx'
+Plug 'mxw/vim-jsx'
 
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
+call plug#end()
 
 " set compatible
 
