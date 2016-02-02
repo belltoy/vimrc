@@ -46,7 +46,6 @@ Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/vcscommand.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/gist-vim'
-" Plug 'godlygeek/tabular'
 Plug 'tpope/vim-surround'
 
 " FZF
@@ -96,32 +95,15 @@ let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Optional:
 Plug 'honza/vim-snippets'
 
-" instead of AutoComplPop
-Plug 'Shougo/neocomplete.vim'
-" Disable AutoComplPop.
-let g:acp_enableAtStartup = 0
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_auto_select = 1
-let g:neocomplete#enable_smart_case = 1
- if !exists('g:neocomplete#sources#omni#input_patterns')
-	  let g:neocomplete#sources#omni#input_patterns = {}
-endif
-let g:neocomplete#sources#omni#input_patterns.python = ''
-let g:neocomplete#sources#omni#input_patterns.ruby = ''
-" " Recommended key-mappings.
-" " <CR>: close popup and save indent.
-" inoremap <silent> <CR> <C-r>=<SID>my_cr_function()<CR>
-" function! s:my_cr_function()
-"   return neocomplete#close_popup() . "\<CR>"
-"   " For no inserting <CR> key.
-"   "return pumvisible() ? neocomplete#close_popup() : "\<CR>"
-" endfunction
-
 " Language syntax support
 " Plug 'jceb/vim-orgmode'
 Plug 'hdima/python-syntax'
 let python_highlight_all = 1
-Plug 'plasticboy/vim-markdown'
+" Plug 'godlygeek/tabular'
+" Plug 'plasticboy/vim-markdown'
+Plug 'tpope/vim-markdown'
+" Plug 'gabrielelana/vim-markdown'
+" Plug 'hallison/vim-markdown'
 Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 Plug 'fatih/vim-go'
@@ -131,12 +113,14 @@ Plug 'belltoy/vim-protobuf'
 Plug 'othree/html5.vim'
 Plug 'aliva/vim-fish'
 Plug 'digitaltoad/vim-jade'
-Plug 'maksimr/vim-jsbeautify'
 Plug 'groenewege/vim-less'
 Plug 'jimenezrick/vimerl'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-lang/vim-elixir'
-" Plug 'carlosgaldino/elixir-snippets'
+Plug 'thinca/vim-ref'
+if has('nvim')
+    Plug 'awetzel/elixir.nvim', { 'do': './install.sh' }
+endif
 Plug 'kelan/gyp.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'rust-lang/rust.vim'
@@ -147,6 +131,8 @@ Plug 'bronson/vim-trailing-whitespace'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim'
 Plug 'einars/js-beautify'
+Plug 'isRuslan/vim-es6'
+Plug 'mxw/vim-jsx'
 " Plug 'Lokaltog/vim-easymotion'
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
@@ -350,6 +336,8 @@ vmap < <gv
 " 查找下一个匹配点
 " nmap <C-n> :cn<CR>
 " nmap <C-p> :cp<CR>
+nmap <M-n> :cn<CR>
+nmap <M-p> :cp<CR>
 
 nmap <Leader>on :only<CR>
 
@@ -440,6 +428,21 @@ let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '
 " let g:netrw_list_hide='^\..*'
 " }}}
 
+" Mappings for FZF
+" Mapping selecting mappings
+nmap <Leader>f :Files<CR>
+nmap <Leader>g :GitFiles<CR>
+nmap <Leader>b :Buffers<CR>
+
+" Insert mode completion
+imap <c-x><c-k> <plug>(fzf-complete-word)
+imap <c-x><c-f> <plug>(fzf-complete-path)
+imap <c-x><c-j> <plug>(fzf-complete-file-ag)
+imap <c-x><c-l> <plug>(fzf-complete-line)
+
+" Advanced customization using autoload functions
+inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
 " Taglist *************************************************************** {{{
 let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 
@@ -448,7 +451,7 @@ let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
 "map <silent> <Leader>f :Tlist<CR><C-W><C-W>
 "Use TagBar
 map <F8> :TagbarToggle<CR><C-W><C-W>
-map <silent> <Leader>f :TagbarToggle<CR><C-W><C-W>
+" map <silent> <Leader>f :TagbarToggle<CR><C-W><C-W>
 let g:tagbar_type_elixir = {'ctagstype': 'elixir', 'kinds': ['f:functions:0:0', 'c:callbacks:0:0', 'd:delegates:0:0', 'e:exceptions:0:0', 'i:implementations:0:0', 'a:macros:0:0', 'o:operators:0:0', 'm:modules:0:0', 'p:protocols:0:0', 'r:records:0:0'], 'sro': '.', 'kind2scope': {'m': 'modules'}, 'scope2kind': {'modules': 'm'}}
 
 "let Tlist_Auto_Highlight_Tag = 1
@@ -479,7 +482,7 @@ let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:functi
 
 " BufExplorer *********************************************************** {{{
 :command BE BufExplorer
-map <silent> <Leader>b :BufExplorer<CR>
+" map <silent> <Leader>b :BufExplorer<CR>
 let g:bufExplorerDefaultHelp=0       " Do not show default help.
 let g:bufExplorerShowRelativePath=1  " Show relative paths.
 let g:bufExplorerSortBy='mru'        " Sort by most recently used.
@@ -492,7 +495,7 @@ let g:bufExplorerUseCurrentWindow=1  " Open in new window.
 
 " Cscope **************************************************************** {{{
 if has("cscope")
-        set csprg=/usr/bin/cscope
+        set csprg=/usr/local/bin/cscope
         set csto=0
         set cst
         set nocsverb
@@ -515,15 +518,6 @@ nmap e<C-]> :cs find e <C-R>=expand("<cword>")<CR><CR>
 nmap f<C-]> :cs find f <C-R>=expand("<cfile>")<CR><CR>
 nmap i<C-]> :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap d<C-]> :cs find d <C-R>=expand("<cword>")<CR><CR>
-" }}}
-
-" autocomplpop *********************************************************** {{{
-" complete option
-set complete=.,w,b,u,t,k
-
-" let g:acp_completeOption = '.,w,b,u,t,k'
-" let g:acp_ignorecaseOption = 0
-" let g:acp_behaviorKeywordLength = 2
 " }}}
 
 " pyditcion ************************************************************** {{{
