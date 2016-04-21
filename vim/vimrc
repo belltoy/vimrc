@@ -63,6 +63,9 @@ Plug 'tomtom/tcomment_vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'altercation/vim-colors-solarized'
 Plug 'tomasr/molokai'
+Plug 'abra/vim-obsidian'
+Plug 'jdkanani/vim-material-theme'
+Plug 'morhetz/gruvbox'
 Plug 'kien/ctrlp.vim'
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_cmd = 'CtrlPMixed'
@@ -99,11 +102,17 @@ Plug 'honza/vim-snippets'
 " Plug 'jceb/vim-orgmode'
 Plug 'hdima/python-syntax'
 let python_highlight_all = 1
-" Plug 'godlygeek/tabular'
-" Plug 'plasticboy/vim-markdown'
-Plug 'tpope/vim-markdown'
+
+Plug 'godlygeek/tabular'
+Plug 'plasticboy/vim-markdown'
+let g:vim_markdown_folding_disabled = 1
+let g:vim_markdown_fenced_languages = ['clj=clojure']
+
+" Plug 'tpope/vim-markdown'
+
 " Plug 'gabrielelana/vim-markdown'
 " Plug 'hallison/vim-markdown'
+
 Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
 Plug 'fatih/vim-go'
@@ -136,13 +145,17 @@ Plug 'mxw/vim-jsx'
 " Plug 'Lokaltog/vim-easymotion'
 Plug 'guns/vim-clojure-static'
 Plug 'tpope/vim-fireplace'
-Plug 'kien/rainbow_parentheses.vim'
+" Plug 'kien/rainbow_parentheses.vim'
+" Plug 'luochen1990/rainbow'
+Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'guns/vim-clojure-highlight'
 Plug 'vim-scripts/paredit.vim'
 Plug 'derekwyatt/vim-scala'
+Plug 'artur-shaik/vim-javacomplete2'
+Plug 'davidzchen/jproperties.vim'
 
 let g:clojure_syntax_keywords = {
-    \ 'clojureMacro': ["defproject", "defcustom"],
+    \ 'clojureMacro': ["defproject", "defcustom", "defspout", "defbolt"],
     \ 'clojureFunc': ["string/join", "string/replace"]
     \ }
 let g:rbpt_colorpairs = [
@@ -165,7 +178,6 @@ let g:rbpt_colorpairs = [
     \ ]
 let g:rbpt_max = 16
 let g:rbpt_loadcmd_toggle = 0
-let g:rainbow_active = 1
 
 " Maybe Conflict with SirVer/ultisnips
 Plug 'editorconfig/editorconfig-vim'
@@ -216,7 +228,9 @@ set fileencodings=ucs-bom,utf-8,gbk,gb2312,default,latin1
 " }}}
 
 " Colors ***************************************************************** {{{
-set t_Co=256 " 256 colors
+if !has('nvim')
+    set t_Co=256 " 256 colors
+endif
 "set t_Co=16
 
 syntax on "syntax 的设置一定要在colo之前，不然colo就会无效
@@ -230,11 +244,12 @@ syntax on "syntax 的设置一定要在colo之前，不然colo就会无效
 let g:molokai_original = 1
 let g:rehash256 = 1
 colorscheme molokai
+" let g:rainbow_active = 1
+filetype plugin indent on   " File stuff
 
 " colorscheme inkpot
 " hi CursorLine   cterm=NONE ctermbg=235
 hi LineNr ctermbg=NONE
-filetype plugin indent on   " File stuff
 " }}}
 
 " detect filetype ******************************************************* {{{
@@ -255,10 +270,13 @@ let g:clojure_align_multiline_strings = 1
 " }}}
 " Always On:
 " au VimEnter * RainbowParenthesesToggle
-autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowParenthesesToggle
-au Syntax * RainbowParenthesesLoadRound
-au Syntax * RainbowParenthesesLoadSquare
-au Syntax * RainbowParenthesesLoadBraces
+" autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowParenthesesToggle
+" autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowToggle
+autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowParentheses
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
 " " Rainbow Parentheses options {
 "     function! Config_Rainbow()
 "         call rainbow_parentheses#load(0) " Load Round brackets
@@ -375,6 +393,7 @@ autocmd FileType php setlocal omnifunc=phpcomplete#CompletePHP
 autocmd FileType c setlocal omnifunc=ccomplete#Complete
 " May require ruby compiled in
 autocmd FileType ruby,eruby setlocal omnifunc=rubycomplete#Complete
+autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " }}}
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -443,40 +462,11 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-" Taglist *************************************************************** {{{
-let Tlist_Ctags_Cmd='/usr/local/bin/ctags'
-
-"定义Tlist的快捷键为tl
-"map <F8> :Tlist<CR><C-W><C-W>
-"map <silent> <Leader>f :Tlist<CR><C-W><C-W>
-"Use TagBar
+" TagBar *************************************************************** {{{
 map <F8> :TagbarToggle<CR><C-W><C-W>
 " map <silent> <Leader>f :TagbarToggle<CR><C-W><C-W>
 let g:tagbar_type_elixir = {'ctagstype': 'elixir', 'kinds': ['f:functions:0:0', 'c:callbacks:0:0', 'd:delegates:0:0', 'e:exceptions:0:0', 'i:implementations:0:0', 'a:macros:0:0', 'o:operators:0:0', 'm:modules:0:0', 'p:protocols:0:0', 'r:records:0:0'], 'sro': '.', 'kind2scope': {'m': 'modules'}, 'scope2kind': {'modules': 'm'}}
 
-"let Tlist_Auto_Highlight_Tag = 1
-"let Tlist_Auto_Open = 1
-let Tlist_Auto_Update = 1
-let Tlist_Close_On_Select = 0
-"let Tlist_Compact_Format = 0
-"let Tlist_Display_Prototype = 0
-let Tlist_Display_Tag_Scope = 1
-"let Tlist_Enable_Fold_Column = 0
-let Tlist_Exit_OnlyWindow = 1            "如果taglist窗口是最后一个显示的窗口，则1退出vim;0不退出vim
-"let Tlist_File_Fold_Auto_Close = 0
-"let Tlist_GainFocus_On_ToggleOpen = 1
-"let Tlist_Hightlight_Tag_On_BufEnter = 1
-"let Tlist_Inc_Winwidth = 0
-"let Tlist_Max_Submenu_Items = 1
-"let Tlist_Max_Tag_Length = 30
-"let Tlist_Process_File_Always = 0
-"let Tlist_Show_Menu = 0
-let Tlist_Show_One_File = 1              "同时(0)/不同时(1)显示多个文件的tag，只显示当前文件的
-let Tlist_Sort_Type = "name"             " order:以tag名字在tag文件中出现的位置排序，name:以名字排序
-"let Tlist_Use_Horiz_Window = 0
-let Tlist_Use_Right_Window = 1           " 1在右侧显示taglist窗口，0在左侧
-let Tlist_WinWidth = 40
-let g:tlist_javascript_settings = 'javascript;s:string;a:array;o:object;f:function'
 " }}}
 
 

@@ -1,10 +1,17 @@
-au BufRead,BufNewFile /etc/nginx/*,*/etc/nginx/* set ft=nginx
+au BufRead,BufNewFile /etc/nginx/*,*/etc/nginx/*,nginx.conf setf nginx
 au BUfNewFile,BufRead *.conf setf conf
 au BufNewFile,BufRead /etc/apache2/*.conf,/etc/apache2/*/*  setf apache
 au BufNewFile,BufRead /etc/hosts  setf hostconf
 au BufNewFile,BufRead *.json setf json
-au BufNewFile,BufRead /etc/fonts/*.conf,/etc/fonts/*/*  set ft=xml
-au BufNewFile,BufRead rebar.config,Emakefile,*.yrl,*.xrl set ft=erlang
+au BufNewFile,BufRead /etc/fonts/*.conf,/etc/fonts/*/*  setf xml
+au BufNewFile,BufRead rebar.config,Emakefile,*.yrl,*.xrl setf erlang
+
+autocmd BufNewFile,BufRead *.yml.example,*.yaml.example setf yaml
+autocmd BufNewFile,BufRead *.ini.example setf dosini
+autocmd BufNewFile,BufRead *.exs.example setf elixir
+autocmd BufNewFile,BufRead *.conf.example setf config
+autocmd BufNewFile,BufRead *.json.example setf json
+autocmd BufNewFile,BufRead *.properties.example setf jproperties
 
 " Git
 autocmd BufNewFile,BufRead *.git/COMMIT_EDITMSG    setf gitcommit

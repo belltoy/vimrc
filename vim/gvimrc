@@ -45,3 +45,5 @@ set gtl=%t gtt=%F
 "nmap <C-]> gt
 "nmap <C-p> gT
 "nmap <C-[> gT
+
+hi Search guibg=#cfff00
