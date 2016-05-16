@@ -58,6 +58,8 @@ Plug 'majutsushi/tagbar'
 
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
+Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'ryanoasis/vim-devicons'
 "Plug 'scrooloose/nerdcommenter'
 Plug 'tomtom/tcomment_vim'
 Plug 'mustache/vim-mustache-handlebars'
@@ -127,6 +129,7 @@ Plug 'jimenezrick/vimerl'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
+let g:ref_man_cmd = "man"
 if has('nvim')
     Plug 'awetzel/elixir.nvim', { 'do': './install.sh' }
 endif
@@ -377,7 +380,7 @@ nmap <Leader>"S di"hPl2x
 nmap <Leader>c' mpva':s/\%V'/"/g<CR>`p
 nmap <Leader>c" mpva":s/\%V"/'/g<CR>`p
 
-let g:erlangManPath="/usr/local/lib/erlang/man"
+" let g:erlangManPath="/usr/local/lib/erlang/man"
 " let $GROFF_NO_SGR=1
 " source $VIMRUNTIME/ftplugin/man.vim
 " nmap K :Man <cword><CR><C-W>L

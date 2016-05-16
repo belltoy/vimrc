@@ -9,7 +9,8 @@ if has("gui_macvim")
 
 "  set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
   "set guifont=DejaVu\ Sans\ YuanTi\ Mono\:h13
-  set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h13
+  " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h13
+  set guifont=DejaVuSansMonoForPowerline\ Nerd\ Font\:h13
   set guioptions-=TLr "去除工具栏
   "set stal=2 " turn on tabs by default
   " colorscheme ir_black
