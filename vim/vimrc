@@ -41,12 +41,15 @@ let g:airline#extensions#tmuxline#enabled = 0
 let g:airline#extensions#promptline#enabled = 0
 Plug 'thisivan/vim-bufexplorer'
 Plug 'tmux-plugins/vim-tmux'
+Plug 'christoomey/vim-tmux-navigator'
+nnoremap <silent> <BS> :TmuxNavigateLeft<cr>
 Plug 'tpope/vim-fugitive'
 Plug 'mattn/emmet-vim'
 Plug 'vim-scripts/vcscommand.vim'
 Plug 'airblade/vim-gitgutter'
 Plug 'mattn/gist-vim'
 Plug 'tpope/vim-surround'
+Plug 'pearofducks/ansible-vim'
 
 " FZF
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -59,8 +62,7 @@ Plug 'majutsushi/tagbar'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'ryanoasis/vim-devicons'
-"Plug 'scrooloose/nerdcommenter'
+" Plug 'ryanoasis/vim-devicons'
 Plug 'tomtom/tcomment_vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'altercation/vim-colors-solarized'
@@ -129,7 +131,7 @@ Plug 'jimenezrick/vimerl'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-lang/vim-elixir'
 Plug 'thinca/vim-ref'
-let g:ref_man_cmd = "man"
+let g:ref_man_cmd = "man 3"
 if has('nvim')
     Plug 'awetzel/elixir.nvim', { 'do': './install.sh' }
 endif
@@ -139,6 +141,7 @@ Plug 'rust-lang/rust.vim'
 Plug 'cespare/vim-toml'
 Plug 'benekastah/neomake'
 Plug 'mileszs/ack.vim'
+let g:ackprg = 'ag --nogroup --nocolor --column'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'pangloss/vim-javascript'
 Plug 'othree/yajs.vim'
@@ -146,8 +149,13 @@ Plug 'einars/js-beautify'
 Plug 'isRuslan/vim-es6'
 Plug 'mxw/vim-jsx'
 " Plug 'Lokaltog/vim-easymotion'
-Plug 'guns/vim-clojure-static'
-Plug 'tpope/vim-fireplace'
+
+"""""""""""" Clojure """""""""""""""
+" Plug 'guns/vim-clojure-static'
+" Plug 'tpope/vim-salve'
+" Plug 'tpope/vim-projectionist'
+" Plug 'tpope/vim-dispatch'
+" Plug 'tpope/vim-fireplace'
 " Plug 'kien/rainbow_parentheses.vim'
 " Plug 'luochen1990/rainbow'
 Plug 'junegunn/rainbow_parentheses.vim'
@@ -362,6 +370,8 @@ nmap <M-p> :cp<CR>
 
 nmap <Leader>on :only<CR>
 
+vmap zc :'<,'>fold<CR>
+
 " }}}
 
 " format json
@@ -443,7 +453,7 @@ let NERDTreeHijackNetrw=1
 let NERDTreeMouseMode=1
 
 " Set ignore file regex
-let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '\.lo$', '\.o$', '\.so$']
+let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '\.lo$', '\.o$', '\.so$', '\.a$', '\.dylib', '\.so']
 " }}}
 
 " Netrw ****************************************************************** {{{
@@ -464,6 +474,8 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
+
+let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 " TagBar *************************************************************** {{{
 map <F8> :TagbarToggle<CR><C-W><C-W>
@@ -529,6 +541,9 @@ function! JavascriptCheckers()
     return ['jshint']
   endif
 endfunction
+
+" http://stackoverflow.com/questions/39645253/clipboard-failure-in-tmux-vim-after-upgrading-to-macos-sierra
+set clipboard=unnamed
 
 let g:syntastic_error_symbol = '✗'
 let g:syntastic_warning_symbol = '!'

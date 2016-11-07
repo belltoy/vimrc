@@ -2,7 +2,8 @@ au BufRead,BufNewFile /etc/nginx/*,*/etc/nginx/*,nginx.conf setf nginx
 au BUfNewFile,BufRead *.conf setf conf
 au BufNewFile,BufRead /etc/apache2/*.conf,/etc/apache2/*/*  setf apache
 au BufNewFile,BufRead /etc/hosts  setf hostconf
-au BufNewFile,BufRead *.json setf json
+au BufNewFile,BufRead *.json,*.avsc setf json
+au BufRead,BufNewFile *.avdl setlocal filetype=avro-idl
 au BufNewFile,BufRead /etc/fonts/*.conf,/etc/fonts/*/*  setf xml
 au BufNewFile,BufRead rebar.config,Emakefile,*.yrl,*.xrl setf erlang
 
