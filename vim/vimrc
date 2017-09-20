@@ -130,14 +130,41 @@ Plug 'groenewege/vim-less'
 Plug 'jimenezrick/vimerl'
 Plug 'kchmck/vim-coffee-script'
 Plug 'elixir-lang/vim-elixir'
+Plug 'slashmili/alchemist.vim'
 Plug 'thinca/vim-ref'
 let g:ref_man_cmd = "man 3"
 if has('nvim')
-    Plug 'awetzel/elixir.nvim', { 'do': './install.sh' }
+    " Plug 'awetzel/elixir.nvim', { 'do': './install.sh' }
 endif
 Plug 'kelan/gyp.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'rust-lang/rust.vim'
+Plug 'racer-rust/vim-racer'
+"" 开启rust的自动reformat的功能
+let g:rustfmt_autosave = 0
+let g:formatdef_rustfmt = '"rustfmt"'
+let g:formatters_rust = ['rustfmt']
+Plug 'Chiel92/vim-autoformat'
+"" 这一行指的是你编译出来的racer所在的路径
+let g:racer_cmd = "~/.cargo/bin/racer"
+let g:racer_experimental_completer = 1
+"" 这里填写的就是我们在1.2.1中让你记住的目录
+" let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
+" au FileType rust nmap gd <Plug>(rust-def)
+au FileType rust nmap gs <Plug>(rust-def-split)
+au FileType rust nmap gx <Plug>(rust-def-vertical)
+au FileType rust nmap <leader>gd <Plug>(rust-doc)
+
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'sebastianmarkow/deoplete-rust'
+let g:deoplete#sources#rust#racer_binary='/Users/belltoy/.cargo/bin/racer'
+let g:deoplete#sources#rust#rust_source_path='/Users/belltoy/codes/rust/src'
+let g:deoplete#enable_at_startup=1
+let g:deoplete#sources#rust#show_duplicates=1
+au FileType rust nmap <buffer> gd <plug>DeopleteRustGoToDefinitionDefault
+au FileType rust nmap <buffer> tgd <plug>DeopleteRustGoToDefinitionTab
+au FileType rust nmap <buffer> K  <plug>DeopleteRustShowDocumentation
+
 Plug 'cespare/vim-toml'
 Plug 'benekastah/neomake'
 Plug 'mileszs/ack.vim'
