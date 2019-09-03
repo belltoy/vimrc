@@ -59,10 +59,10 @@ Plug 'junegunn/vim-easy-align'
 
 Plug 'majutsushi/tagbar'
 
+Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdtree'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-" Plug 'ryanoasis/vim-devicons'
 Plug 'tomtom/tcomment_vim'
 Plug 'mustache/vim-mustache-handlebars'
 Plug 'altercation/vim-colors-solarized'
@@ -70,7 +70,17 @@ Plug 'tomasr/molokai'
 Plug 'abra/vim-obsidian'
 Plug 'jdkanani/vim-material-theme'
 Plug 'morhetz/gruvbox'
-Plug 'kien/ctrlp.vim'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'mhinz/vim-grepper' ", { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
+Plug 'jremmen/vim-ripgrep'
+let g:grepper = {
+    \ 'tools': ['rg', 'ack', 'grep', 'git'],
+    \ }
+let g:grepper.highlight = 1
+let g:grepper.jump = 1
+nnoremap <leader>g :Grepper<cr>
+let g:grepper.prompt_mapping_tool = '<leader>g'
+
 let g:ctrlp_map = '<Leader>t'
 let g:ctrlp_cmd = 'CtrlPMixed'
 let g:ctrlp_custom_ignore = {
@@ -87,6 +97,7 @@ let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
 Plug 'Raimondi/delimitMate'
+Plug 'mattn/webapi-vim'
 
 " snipmate
 " VimL only
@@ -96,11 +107,21 @@ Plug 'Raimondi/delimitMate'
 
 " ultisnips need python support
 Plug 'SirVer/ultisnips'
-let g:UltiSnipsExpandTrigger="<tab>"
-let g:UltiSnipsJumpForwardTrigger="<tab>"
-let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+" let g:UltiSnipsExpandTrigger="<tab>"
+" let g:UltiSnipsJumpForwardTrigger="<tab>"
+" let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
 " Optional:
 Plug 'honza/vim-snippets'
+
+" Press enter key to trigger snippet expansion
+" The parameters are the same as `:help feedkeys()`
+inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
+
+" c-j c-k for moving in snippet
+" let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
+let g:UltiSnipsJumpForwardTrigger	= "<c-j>"
+let g:UltiSnipsJumpBackwardTrigger	= "<c-k>"
+let g:UltiSnipsRemoveSelectModeMappings = 0
 
 " Language syntax support
 " Plug 'jceb/vim-orgmode'
@@ -133,44 +154,32 @@ Plug 'elixir-lang/vim-elixir'
 Plug 'slashmili/alchemist.vim'
 Plug 'thinca/vim-ref'
 let g:ref_man_cmd = "man 3"
-if has('nvim')
-    " Plug 'awetzel/elixir.nvim', { 'do': './install.sh' }
-endif
+Plug 'keith/swift.vim'
 Plug 'kelan/gyp.vim'
 Plug 'ekalinin/Dockerfile.vim'
 Plug 'rust-lang/rust.vim'
 Plug 'racer-rust/vim-racer'
+
 "" 开启rust的自动reformat的功能
 let g:rustfmt_autosave = 0
 let g:formatdef_rustfmt = '"rustfmt"'
 let g:formatters_rust = ['rustfmt']
 Plug 'Chiel92/vim-autoformat'
-"" 这一行指的是你编译出来的racer所在的路径
 let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
-"" 这里填写的就是我们在1.2.1中让你记住的目录
 " let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
 " au FileType rust nmap gd <Plug>(rust-def)
 au FileType rust nmap gs <Plug>(rust-def-split)
 au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap <leader>gd <Plug>(rust-doc)
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'sebastianmarkow/deoplete-rust'
-let g:deoplete#sources#rust#racer_binary='/Users/belltoy/.cargo/bin/racer'
-let g:deoplete#sources#rust#rust_source_path='/Users/belltoy/codes/rust/src'
-let g:deoplete#enable_at_startup=1
-let g:deoplete#sources#rust#show_duplicates=1
-au FileType rust nmap <buffer> gd <plug>DeopleteRustGoToDefinitionDefault
-au FileType rust nmap <buffer> tgd <plug>DeopleteRustGoToDefinitionTab
-au FileType rust nmap <buffer> K  <plug>DeopleteRustShowDocumentation
+au FileType rust nmap K <Plug>(rust-doc)
 
 Plug 'cespare/vim-toml'
-Plug 'benekastah/neomake'
+Plug 'neomake/neomake'
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 Plug 'bronson/vim-trailing-whitespace'
 Plug 'pangloss/vim-javascript'
+Plug 'leafgarland/typescript-vim'
 Plug 'othree/yajs.vim'
 Plug 'einars/js-beautify'
 Plug 'isRuslan/vim-es6'
@@ -185,6 +194,8 @@ Plug 'mxw/vim-jsx'
 " Plug 'tpope/vim-fireplace'
 " Plug 'kien/rainbow_parentheses.vim'
 " Plug 'luochen1990/rainbow'
+Plug 'guns/vim-sexp',    {'for': 'clojure'}
+Plug 'liquidz/vim-iced', {'for': 'clojure'}
 Plug 'junegunn/rainbow_parentheses.vim'
 Plug 'guns/vim-clojure-highlight'
 Plug 'vim-scripts/paredit.vim'
@@ -221,6 +232,82 @@ let g:rbpt_loadcmd_toggle = 0
 Plug 'editorconfig/editorconfig-vim'
 
 Plug 'mxw/vim-jsx'
+
+" syntastic is too slow
+" Plug 'vim-syntastic/syntastic'
+
+" << LSP >> {{{
+
+" Plug 'autozimu/LanguageClient-neovim', {
+"     \ 'branch': 'next',
+"     \ 'do': 'bash install.sh',
+"     \ }
+
+
+" Plug 'ryanoasis/vim-devicons'
+" devicons config
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
+let g:airline_powerline_fonts = 1
+let g:webdevicons_enable_vimfiler = 0
+let g:webdevicons_conceal_nerdtree_brackets = 1
+let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+" let g:NERDTreeGitStatusNodeColorization = 1
+let g:NERDTreeGitStatusWithFlags = 1
+
+
+" (Optional) Multi-entry selection UI.
+
+" (Completion plugin option 1)
+if has('nvim')
+    " assuming your using vim-plug: https://github.com/junegunn/vim-plug
+    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
+    Plug 'ncm2/ncm2'
+    Plug 'roxma/nvim-yarp'
+
+    " enable ncm2 for all buffers
+    autocmd BufEnter * call ncm2#enable_for_buffer()
+
+    " IMPORTANTE: :help Ncm2PopupOpen for more information
+    set completeopt=noinsert,menuone,noselect
+
+    " NOTE: you need to install completion sources to get completions. Check
+    " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
+    Plug 'ncm2/ncm2-bufword'
+    Plug 'ncm2/ncm2-tmux'
+    Plug 'ncm2/ncm2-path'
+    Plug 'ncm2/ncm2-racer'
+    Plug 'ncm2/ncm2-ultisnips'
+else
+    Plug 'roxma/vim-hug-neovim-rpc'
+    Plug 'roxma/nvim-yarp'
+endif
+" (Completion plugin option 2)
+" Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+
+" Required for operations modifying multiple buffers like rename.
+set hidden
+
+let g:LanguageClient_serverCommands = {
+    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript.jsx': ['javascript-typescript-stdio'],
+    \ 'python': ['pyls'],
+    \ 'go': ['go-langserver'],
+    \ }
+let g:LanguageClient_autoStart = 1
+nnoremap <leader>lcs :LanguageClientStart<CR>
+
+nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
+noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+noremap <silent> S :call LanugageClient_textDocument_documentSymbol()<CR>
+
+" }}}
 
 call plug#end()
 
@@ -293,6 +380,7 @@ hi LineNr ctermbg=NONE
 " detect filetype ******************************************************* {{{
 au BufRead,BufNewFile *.edc setlocal filetype=edc
 au BufRead,BufNewFile *.qml setlocal filetype=qml
+autocmd BufReadPost *.rs setlocal filetype=rust
 
 au BufRead,BufNewFile *.eco setlocal filetype=html
 
@@ -339,7 +427,7 @@ let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
 
 set directory=~/.vim/tmp/swap    " Set Swap directory
 set nobk "关闭自动备份
-set cot=menuone ",preview  "全能补全的时候只显示菜单，preview预览窗口
+set completeopt=noinsert,menuone,noselect
 set undodir=~/.vim/tmp/undo
 set undofile
 set undolevels=1000
@@ -369,8 +457,6 @@ imap aa @
 imap <up> <C-o>gk
 imap <down> <C-o>gj
 imap .. ->
-map <S-Enter> O<Esc>
-map <CR> o<Esc>
 nmap <silent> <Leader>h :vsplit<CR>
 nmap <silent> <Leader>v :split<CR>
 
@@ -394,6 +480,8 @@ vmap < <gv
 " nmap <C-p> :cp<CR>
 nmap <M-n> :cn<CR>
 nmap <M-p> :cp<CR>
+nmap <M-1> gT
+nmap <M-2> gt
 
 nmap <Leader>on :only<CR>
 
@@ -490,7 +578,7 @@ let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '
 " Mappings for FZF
 " Mapping selecting mappings
 nmap <Leader>f :Files<CR>
-nmap <Leader>g :GitFiles<CR>
+nmap <Leader>git :GitFiles<CR>
 nmap <Leader>b :Buffers<CR>
 
 " Insert mode completion
@@ -502,12 +590,40 @@ imap <c-x><c-l> <plug>(fzf-complete-line)
 " Advanced customization using autoload functions
 inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 
-let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
+" let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 " TagBar *************************************************************** {{{
-map <F8> :TagbarToggle<CR><C-W><C-W>
+map <F8> :TagbarToggle<CR>
+map <silent> <Leader>l :TagbarToggle<CR>
 " map <silent> <Leader>f :TagbarToggle<CR><C-W><C-W>
 let g:tagbar_type_elixir = {'ctagstype': 'elixir', 'kinds': ['f:functions:0:0', 'c:callbacks:0:0', 'd:delegates:0:0', 'e:exceptions:0:0', 'i:implementations:0:0', 'a:macros:0:0', 'o:operators:0:0', 'm:modules:0:0', 'p:protocols:0:0', 'r:records:0:0'], 'sro': '.', 'kind2scope': {'m': 'modules'}, 'scope2kind': {'modules': 'm'}}
+let g:tagbar_type_go = {
+	\ 'ctagstype' : 'go',
+	\ 'kinds'     : [
+		\ 'p:package',
+		\ 'i:imports:1',
+		\ 'c:constants',
+		\ 'v:variables',
+		\ 't:types',
+		\ 'n:interfaces',
+		\ 'w:fields',
+		\ 'e:embedded',
+		\ 'm:methods',
+		\ 'r:constructor',
+		\ 'f:functions'
+	\ ],
+	\ 'sro' : '.',
+	\ 'kind2scope' : {
+		\ 't' : 'ctype',
+		\ 'n' : 'ntype'
+	\ },
+	\ 'scope2kind' : {
+		\ 'ctype' : 't',
+		\ 'ntype' : 'n'
+	\ },
+	\ 'ctagsbin'  : 'gotags',
+	\ 'ctagsargs' : '-sort -silent'
+\ }
 
 " }}}
 
