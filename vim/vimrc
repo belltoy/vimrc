@@ -34,11 +34,6 @@ call plug#begin('~/.vim/bundle')
 
 Plug 'vim-scripts/L9'
 
-Plug 'bling/vim-airline'
-Plug 'edkolev/tmuxline.vim'
-Plug 'edkolev/promptline.vim'
-let g:airline#extensions#tmuxline#enabled = 0
-let g:airline#extensions#promptline#enabled = 0
 Plug 'thisivan/vim-bufexplorer'
 Plug 'tmux-plugins/vim-tmux'
 Plug 'christoomey/vim-tmux-navigator'
@@ -51,24 +46,25 @@ Plug 'mattn/gist-vim'
 Plug 'tpope/vim-surround'
 Plug 'pearofducks/ansible-vim'
 
-" FZF
-Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
-Plug 'junegunn/fzf.vim'
+" Mappings for FZF
+" Mapping selecting mappings
+" nmap <Leader>f :Files<CR>
+" nmap <Leader>git :GitFiles<CR>
+" nmap <Leader>b :Buffers<CR>
 
 Plug 'junegunn/vim-easy-align'
 
-Plug 'majutsushi/tagbar'
+Plug 'Yggdroot/LeaderF', { 'do': './install.sh' }
+" Plug 'liuchengxu/vista.vim'
 
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'scrooloose/nerdtree'
+" Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
 Plug 'jistr/vim-nerdtree-tabs'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tomtom/tcomment_vim'
 Plug 'mustache/vim-mustache-handlebars'
-Plug 'altercation/vim-colors-solarized'
-Plug 'tomasr/molokai'
+Plug 'jaredgorski/spacecamp'
 Plug 'abra/vim-obsidian'
-Plug 'jdkanani/vim-material-theme'
 Plug 'morhetz/gruvbox'
 Plug 'ctrlpvim/ctrlp.vim'
 Plug 'mhinz/vim-grepper' ", { 'on': ['Grepper', '<plug>(GrepperOperator)'] }
@@ -90,14 +86,43 @@ let g:ctrlp_custom_ignore = {
 "Plug 'rizzatti/funcoo.vim'
 "Plug 'rizzatti/dash.vim'
 Plug 'asins/vimcdoc'
+
 Plug 'terryma/vim-multiple-cursors'
 " Default mapping
 let g:multi_cursor_next_key='<C-n>'
 let g:multi_cursor_prev_key='<C-p>'
 let g:multi_cursor_skip_key='<C-x>'
 let g:multi_cursor_quit_key='<Esc>'
+
 Plug 'Raimondi/delimitMate'
 Plug 'mattn/webapi-vim'
+
+
+" " coc
+" Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" " Use <c-space> to trigger completion.
+" inoremap <silent><expr> <c-space> coc#refresh()
+" " Use `[g` and `]g` to navigate diagnostics
+" " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+" nmap <silent> [g <Plug>(coc-diagnostic-prev)
+" nmap <silent> ]g <Plug>(coc-diagnostic-next)
+"
+" " GoTo code navigation.
+" nmap <silent> gd <Plug>(coc-definition)
+" nmap <silent> gy <Plug>(coc-type-definition)
+" nmap <silent> gi <Plug>(coc-implementation)
+" nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+" nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+" function! s:show_documentation()
+"   if (index(['vim','help'], &filetype) >= 0)
+"     execute 'h '.expand('<cword>')
+"   else
+"     call CocAction('doHover')
+"   endif
+" endfunction
 
 " snipmate
 " VimL only
@@ -115,7 +140,6 @@ Plug 'honza/vim-snippets'
 
 " Press enter key to trigger snippet expansion
 " The parameters are the same as `:help feedkeys()`
-inoremap <silent> <expr> <CR> ncm2_ultisnips#expand_or("\<CR>", 'n')
 
 " c-j c-k for moving in snippet
 " let g:UltiSnipsExpandTrigger		= "<Plug>(ultisnips_expand)"
@@ -138,15 +162,20 @@ let g:vim_markdown_fenced_languages = ['clj=clojure']
 " Plug 'gabrielelana/vim-markdown'
 " Plug 'hallison/vim-markdown'
 
+Plug 'vmchale/just-vim'
 Plug 'elzr/vim-json'
 let g:vim_json_syntax_conceal = 0
-Plug 'fatih/vim-go'
-let g:go_fmt_autosave = 0
-let g:go_bin_path = expand("~/.gotools")
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+let g:go_def_mapping_enabled = 0 " Disabling vim-go mapping `gd` for go to definition add this line to your ~/.vimrc
+" let g:go_def_mode='gopls'
+" let g:go_info_mode='gopls'
+" let g:go_fmt_autosave = 0
+" let g:go_bin_path = expand("~/.gotools")
 Plug 'belltoy/vim-protobuf'
 Plug 'othree/html5.vim'
 Plug 'aliva/vim-fish'
-Plug 'digitaltoad/vim-jade'
+" Plug 'digitaltoad/vim-jade'
+Plug 'digitaltoad/vim-pug'
 Plug 'groenewege/vim-less'
 Plug 'jimenezrick/vimerl'
 Plug 'kchmck/vim-coffee-script'
@@ -169,34 +198,73 @@ let g:racer_cmd = "~/.cargo/bin/racer"
 let g:racer_experimental_completer = 1
 " let $RUST_SRC_PATH="<path-to-rust-srcdir>/src/"
 " au FileType rust nmap gd <Plug>(rust-def)
-au FileType rust nmap gs <Plug>(rust-def-split)
-au FileType rust nmap gx <Plug>(rust-def-vertical)
-au FileType rust nmap K <Plug>(rust-doc)
+" au FileType rust nmap gs <Plug>(rust-def-split)
+" au FileType rust nmap gx <Plug>(rust-def-vertical)
+" au FileType rust nmap K <Plug>(rust-doc)
 
+Plug 'isRuslan/vim-es6'
+Plug 'othree/yajs.vim'
+Plug 'othree/es.next.syntax.vim'
 Plug 'cespare/vim-toml'
-Plug 'neomake/neomake'
 Plug 'mileszs/ack.vim'
 let g:ackprg = 'ag --nogroup --nocolor --column'
 Plug 'bronson/vim-trailing-whitespace'
-Plug 'pangloss/vim-javascript'
+
 Plug 'leafgarland/typescript-vim'
-Plug 'othree/yajs.vim'
 Plug 'einars/js-beautify'
-Plug 'isRuslan/vim-es6'
-Plug 'mxw/vim-jsx'
-" Plug 'Lokaltog/vim-easymotion'
 
 """""""""""" Clojure """""""""""""""
-" Plug 'guns/vim-clojure-static'
-" Plug 'tpope/vim-salve'
-" Plug 'tpope/vim-projectionist'
-" Plug 'tpope/vim-dispatch'
-" Plug 'tpope/vim-fireplace'
-" Plug 'kien/rainbow_parentheses.vim'
-" Plug 'luochen1990/rainbow'
+Plug 'guns/vim-clojure-static'
+Plug 'tpope/vim-salve'
+Plug 'tpope/vim-projectionist'
+Plug 'tpope/vim-dispatch'
+Plug 'tpope/vim-fireplace'
+Plug 'luochen1990/rainbow'
+let g:rainbow_conf = {
+	\	'separately': {
+	\		'nerdtree': 0,
+	\	}
+	\}
+let g:rainbow_active=1
+
+Plug 'jaredgorski/spacecamp'
+
 Plug 'guns/vim-sexp',    {'for': 'clojure'}
 Plug 'liquidz/vim-iced', {'for': 'clojure'}
-Plug 'junegunn/rainbow_parentheses.vim'
+
+" Plug 'junegunn/rainbow_parentheses.vim'
+
+" Always On:
+" au VimEnter * RainbowParenthesesToggle
+" autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowParenthesesToggle
+" autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowToggle
+" autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowParentheses
+let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
+" au Syntax * RainbowParenthesesLoadRound
+" au Syntax * RainbowParenthesesLoadSquare
+" au Syntax * RainbowParenthesesLoadBraces
+" " Rainbow Parentheses options {
+"     function! Config_Rainbow()
+"         call rainbow_parentheses#load(0) " Load Round brackets
+"         call rainbow_parentheses#load(1) " Load Square brackets
+"         call rainbow_parentheses#load(2) " Load Braces
+"         autocmd! TastetheRainbow VimEnter * call Load_Rainbow() " 64bit Hack - Set VimEnter after syntax load
+"     endfunction
+"
+"     function! Load_Rainbow()
+"         call rainbow_parentheses#activate()
+"     endfunction
+"
+"     augroup TastetheRainbow
+"         autocmd!
+"         autocmd Syntax * call Config_Rainbow() " Load rainbow_parentheses on syntax load
+"         autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * call Load_Rainbow()
+"     augroup END
+"
+"     " rainbow_parentheses toggle
+"     nnoremap <silent> <Leader>t :call rainbow_parentheses#toggle()<CR>
+" " }
+
 Plug 'guns/vim-clojure-highlight'
 Plug 'vim-scripts/paredit.vim'
 Plug 'derekwyatt/vim-scala'
@@ -231,11 +299,6 @@ let g:rbpt_loadcmd_toggle = 0
 " Maybe Conflict with SirVer/ultisnips
 Plug 'editorconfig/editorconfig-vim'
 
-Plug 'mxw/vim-jsx'
-
-" syntastic is too slow
-" Plug 'vim-syntastic/syntastic'
-
 " << LSP >> {{{
 
 " Plug 'autozimu/LanguageClient-neovim', {
@@ -243,18 +306,37 @@ Plug 'mxw/vim-jsx'
 "     \ 'do': 'bash install.sh',
 "     \ }
 
+" Use release branch (recommend)
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+" Coc Key mappings
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
-" Plug 'ryanoasis/vim-devicons'
-" devicons config
-if exists("g:loaded_webdevicons")
-  call webdevicons#refresh()
-endif
-let g:airline_powerline_fonts = 1
-let g:webdevicons_enable_vimfiler = 0
-let g:webdevicons_conceal_nerdtree_brackets = 1
-let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
-let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
-" let g:NERDTreeGitStatusNodeColorization = 1
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
+Plug 'junegunn/fzf'
+Plug 'elixir-lsp/coc-elixir', {'do': 'yarn install && yarn prepack'}
+
 let g:NERDTreeGitStatusWithFlags = 1
 
 
@@ -262,54 +344,105 @@ let g:NERDTreeGitStatusWithFlags = 1
 
 " (Completion plugin option 1)
 if has('nvim')
-    " assuming your using vim-plug: https://github.com/junegunn/vim-plug
-    Plug 'autozimu/LanguageClient-neovim', { 'do': ':UpdateRemotePlugins' }
-    Plug 'ncm2/ncm2'
-    Plug 'roxma/nvim-yarp'
-
-    " enable ncm2 for all buffers
-    autocmd BufEnter * call ncm2#enable_for_buffer()
-
-    " IMPORTANTE: :help Ncm2PopupOpen for more information
-    set completeopt=noinsert,menuone,noselect
-
-    " NOTE: you need to install completion sources to get completions. Check
-    " our wiki page for a list of sources: https://github.com/ncm2/ncm2/wiki
-    Plug 'ncm2/ncm2-bufword'
-    Plug 'ncm2/ncm2-tmux'
-    Plug 'ncm2/ncm2-path'
-    Plug 'ncm2/ncm2-racer'
-    Plug 'ncm2/ncm2-ultisnips'
 else
     Plug 'roxma/vim-hug-neovim-rpc'
     Plug 'roxma/nvim-yarp'
 endif
+
+" colorscheme
+" <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
+Plug 'jdkanani/vim-material-theme'
+Plug 'altercation/vim-colors-solarized'
+let g:solarized_termcolors=256
+Plug 'tomasr/molokai'
+Plug 'morhetz/gruvbox'
+Plug 'tsiemens/vim-aftercolors'
+"colorscheme mine
+" colorscheme solarized
+" let g:solarized_termcolors=256
+" let g:solarized_termtrans=1
+" let g:solarized_contrast="high"
+" let g:solarized_visibility="high"
+
+Plug 'wincent/terminus'
+
+let g:molokai_original = 1
+let g:rehash256 = 1
+" >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
 " (Completion plugin option 2)
 " Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
 
 " Required for operations modifying multiple buffers like rename.
 set hidden
 
-let g:LanguageClient_serverCommands = {
-    \ 'rust': ['rustup', 'run', 'stable', 'rls'],
-    \ 'javascript': ['javascript-typescript-stdio'],
-    \ 'javascript.jsx': ['javascript-typescript-stdio'],
-    \ 'python': ['pyls'],
-    \ 'go': ['go-langserver'],
-    \ }
-let g:LanguageClient_autoStart = 1
-nnoremap <leader>lcs :LanguageClientStart<CR>
-
-nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
-nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
-nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
-" noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
-noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
-noremap <silent> S :call LanugageClient_textDocument_documentSymbol()<CR>
+    " \ 'rust': ['rust-analyzer'],
+" let g:LanguageClient_serverCommands = {
+"     \ 'rust': ['rustup', 'run', 'stable', 'rls'],
+"     \ 'javascript': ['javascript-typescript-stdio'],
+"     \ 'python': ['pyls'],
+"     \ 'ruby': ['solargraph', 'stdio'],
+"     \ 'go': ['gopls'],
+"     \ 'c': ['ccls', '--log-file=/tmp/cc.log'],
+"     \ 'cpp': ['ccls', '--log-file=/tmp/cc.log'],
+"     \ 'cuda': ['ccls', '--log-file=/tmp/cc.log'],
+"     \ 'objc': ['ccls', '--log-file=/tmp/cc.log'],
+"     \ }
+" let g:LanguageClient_autoStart = 1
+" let g:LanguageClient_loadSettings = 1 " Use an absolute configuration path if you want system-wide settings
+" nnoremap <leader>lcs :LanguageClientStart<CR>
+"
+" nnoremap <silent> K :call LanguageClient_textDocument_hover()<CR>
+" nnoremap <silent> gd :call LanguageClient_textDocument_definition()<CR>
+" nnoremap <silent> gr :call LanguageClient#textDocument_references()<CR>
+" nnoremap <silent> <F2> :call LanguageClient_textDocument_rename()<CR>
+" " noremap <silent> Z :call LanguageClient_textDocument_definition()<CR>
+" noremap <silent> R :call LanguageClient_textDocument_rename()<CR>
+" noremap <silent> S :call LanguageClient_textDocument_documentSymbol()<CR>
 
 " }}}
 
+Plug 'preservim/tagbar'
+
+
+Plug 'ryanoasis/vim-devicons'
+" devicons config
+" let g:webdevicons_enable_vimfiler = 0
+" let g:webdevicons_conceal_nerdtree_brackets = 1
+" let g:WebDevIconsNerdTreeAfterGlyphPadding = ' '
+" let g:WebDevIconsNerdTreeGitPluginForceVAlign = 1
+" let g:NERDTreeGitStatusNodeColorization = 1
+" let g:webdevicons_enable_nerdtree = 0
+let g:webdevicons_enable = 1
+let g:webdevicons_enable_airline_tabline = 1
+let g:webdevicons_enable_airline_statusline = 1
+let g:WebDevIconsOS = 'Darwin'
+let g:WebDevIconsUnicodeDecorateFolderNodes = 1
+let g:DevIconsEnableFoldersOpenClose = 1
+let g:DevIconsEnableFolderExtensionPatternMatching = 1
+
+Plug 'bling/vim-airline'
+Plug 'edkolev/tmuxline.vim'
+Plug 'edkolev/promptline.vim'
+let g:airline#extensions#tmuxline#enabled = 0
+let g:airline#extensions#promptline#enabled = 0
+let g:airline#extensions#tabline#enabled = 1
+let g:airline#extensions#tabline#show_tab_nr = 1
+let g:airline#extensions#tabline#tab_nr_type= 1
+let g:airline#extensions#tabline#show_tab_type = 1
+let g:airline#extensions#tabline#tabs_label = ''
+let g:WebDevIconsNerdTreeBeforeGlyphPadding = ""
+let g:WebDevIconsUnicodeDecorateFolderNodes = v:true
+" Disable arrow icons at the left side of folders for NERDTree.
+" let g:NERDTreeDirArrowExpandable = "\u00a0"
+" let g:NERDTreeDirArrowCollapsible = "\u00a0"
+
 call plug#end()
+
+set conceallevel=3
+if exists("g:loaded_webdevicons")
+  call webdevicons#refresh()
+endif
 
 " set compatible
 
@@ -358,23 +491,38 @@ if !has('nvim')
 endif
 "set t_Co=16
 
-syntax on "syntax 的设置一定要在colo之前，不然colo就会无效
-"colorscheme mine
-" colorscheme solarized
-" let g:solarized_termcolors=256
-" let g:solarized_termtrans=1
-" let g:solarized_contrast="high"
-" let g:solarized_visibility="high"
-
-let g:molokai_original = 1
-let g:rehash256 = 1
+" syntax on "syntax 的设置一定要在colo之前，不然colo就会无效
+if !exists('g:syntax_on')
+	syntax enable
+endif
 colorscheme molokai
+" colorscheme spacecamp
 " let g:rainbow_active = 1
 filetype plugin indent on   " File stuff
+  " if has('vim_starting')
+  "   if has('syntax') && !exists('g:syntax_on')
+  "     syntax enable
+  "   end
+  " end
 
 " colorscheme inkpot
 " hi CursorLine   cterm=NONE ctermbg=235
-hi LineNr ctermbg=NONE
+"hi LineNr ctermbg=NONE " asdfkjaslkdf
+
+
+
+" setup 'airblade/vim-gitgutter'
+let g:gitgutter_set_sign_backgrounds = 1
+let g:gitgutter_sign_allow_clobber = 1
+let g:gitgutter_highlight_lines = 0
+let g:gitgutter_highlight_linenrs = 1
+set signcolumn=no
+
+hi link GitGutterAddLineNr          DiffAdd               " default: links to CursorLineNr
+hi link GitGutterChangeLineNr       DiffChange            " default: links to CursorLineNr
+hi link GitGutterDeleteLineNr       DiffDelete            " default: links to CursorLineNr
+hi link GitGutterChangeDeleteLineNr GitGutterChangeLineNr " default: links to CursorLineNr
+
 " }}}
 
 " detect filetype ******************************************************* {{{
@@ -394,36 +542,7 @@ let erlang_folding = 1
 autocmd FileType clojure,lisp let b:delimitMate_quotes = "\""
 let g:clojure_align_multiline_strings = 1
 " }}}
-" Always On:
-" au VimEnter * RainbowParenthesesToggle
-" autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowParenthesesToggle
-" autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowToggle
-autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * RainbowParentheses
-let g:rainbow#pairs = [['(', ')'], ['[', ']'], ['{', '}']]
-" au Syntax * RainbowParenthesesLoadRound
-" au Syntax * RainbowParenthesesLoadSquare
-" au Syntax * RainbowParenthesesLoadBraces
-" " Rainbow Parentheses options {
-"     function! Config_Rainbow()
-"         call rainbow_parentheses#load(0) " Load Round brackets
-"         call rainbow_parentheses#load(1) " Load Square brackets
-"         call rainbow_parentheses#load(2) " Load Braces
-"         autocmd! TastetheRainbow VimEnter * call Load_Rainbow() " 64bit Hack - Set VimEnter after syntax load
-"     endfunction
-"
-"     function! Load_Rainbow()
-"         call rainbow_parentheses#activate()
-"     endfunction
-"
-"     augroup TastetheRainbow
-"         autocmd!
-"         autocmd Syntax * call Config_Rainbow() " Load rainbow_parentheses on syntax load
-"         autocmd VimEnter,BufRead,BufWinEnter,BufNewFile * call Load_Rainbow()
-"     augroup END
-"
-"     " rainbow_parentheses toggle
-"     nnoremap <silent> <Leader>t :call rainbow_parentheses#toggle()<CR>
-" " }
+
 
 set directory=~/.vim/tmp/swap    " Set Swap directory
 set nobk "关闭自动备份
@@ -456,7 +575,7 @@ imap hh =>
 imap aa @
 imap <up> <C-o>gk
 imap <down> <C-o>gj
-imap .. ->
+imap ,, ->
 nmap <silent> <Leader>h :vsplit<CR>
 nmap <silent> <Leader>v :split<CR>
 
@@ -495,10 +614,12 @@ vmap <Leader>j !python -m json.tool<CR>
 " http://stackoverflow.com/questions/2147875/what-vim-commands-can-be-used-to-quote-unquote-words
 " Quote a word, using single quotes
 nmap <Leader>'s ciw'<C-R>"'<Esc>
-" Unquote a word that's enclosed in single quotes
-nmap <Leader>'S di'hPl2x
+" Quote a word, using `` quotes
+nmap <Leader>`s ciw`<C-R>"`<Esc>
 " Quote a word, using double quotes
 nmap <Leader>"s ciw"<C-R>""<Esc>
+" Unquote a word that's enclosed in single quotes
+nmap <Leader>'S di'hPl2x
 " Unquote a word that's enclosed in double quotes
 nmap <Leader>"S di"hPl2x
 " Change single quotes to double or reverse
@@ -575,12 +696,6 @@ let NERDTreeIgnore=['\.vim$', '\.pyc$', '\.class$', '\.beam$', '^CVS$', '\~$', '
 " let g:netrw_list_hide='^\..*'
 " }}}
 
-" Mappings for FZF
-" Mapping selecting mappings
-nmap <Leader>f :Files<CR>
-nmap <Leader>git :GitFiles<CR>
-nmap <Leader>b :Buffers<CR>
-
 " Insert mode completion
 imap <c-x><c-k> <plug>(fzf-complete-word)
 imap <c-x><c-f> <plug>(fzf-complete-path)
@@ -593,9 +708,11 @@ inoremap <expr> <c-x><c-k> fzf#vim#complete#word({'left': '15%'})
 " let $FZF_DEFAULT_COMMAND = 'ag -l -g ""'
 
 " TagBar *************************************************************** {{{
-map <F8> :TagbarToggle<CR>
+" map <F8> :TagbarToggle<CR>
 map <silent> <Leader>l :TagbarToggle<CR>
 " map <silent> <Leader>f :TagbarToggle<CR><C-W><C-W>
+" map <silent> <Leader>l :Vista!!<CR>
+let g:tagbar_map_openallfolds = ""
 let g:tagbar_type_elixir = {'ctagstype': 'elixir', 'kinds': ['f:functions:0:0', 'c:callbacks:0:0', 'd:delegates:0:0', 'e:exceptions:0:0', 'i:implementations:0:0', 'a:macros:0:0', 'o:operators:0:0', 'm:modules:0:0', 'p:protocols:0:0', 'r:records:0:0'], 'sro': '.', 'kind2scope': {'m': 'modules'}, 'scope2kind': {'modules': 'm'}}
 let g:tagbar_type_go = {
 	\ 'ctagstype' : 'go',
@@ -668,30 +785,12 @@ nmap i<C-]> :cs find i ^<C-R>=expand("<cfile>")<CR>$<CR>
 nmap d<C-]> :cs find d <C-R>=expand("<cword>")<CR><CR>
 " }}}
 
-" pyditcion ************************************************************** {{{
-"let g:pydiction_location = '~/etc/vimrc/vim/bundle/Pydiction/complete-dict'
-" }}}
-
 " Airline
 let g:airline_powerline_fonts=1
 
-" jscs returns exit code when no config file is present.
-" Only load it when appropriate.
-function! JavascriptCheckers()
-  if filereadable(getcwd() . '/.jscsrc')
-    return ['jshint', 'jscs']
-  else
-    return ['jshint']
-  endif
-endfunction
 
 " http://stackoverflow.com/questions/39645253/clipboard-failure-in-tmux-vim-after-upgrading-to-macos-sierra
 set clipboard=unnamed
-
-let g:syntastic_error_symbol = '✗'
-let g:syntastic_warning_symbol = '!'
-let g:syntastic_javascript_checkers = JavascriptCheckers()
-" let g:syntastic_javascript_jshint_config = ['.jshintrc', '.jscsrc']
 
 let g:gitgutter_max_signs=5000
 
@@ -711,6 +810,7 @@ source ~/.vim/gvimrc
 
 " load .vimrc in current directory
 set exrc
+set updatetime=100
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""
 " Host specific
@@ -718,5 +818,7 @@ set exrc
 if filereadable(expand("~/.vimrc.local"))
   source ~/.vimrc.local
 endif
+
+set pyxversion=3
 
 "vim: fdm=marker
