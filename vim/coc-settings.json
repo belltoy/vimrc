@@ -32,6 +32,11 @@
           "snippetSupport": true
         }
       }
+    },
+
+    "erlang": {
+      "command": "erlang_ls",
+      "filetypes": ["erlang"]
     }
   },
   "elixirLS.dialyzerEnabled": true
