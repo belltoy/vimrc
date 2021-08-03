@@ -37,7 +37,16 @@
     "erlang": {
       "command": "erlang_ls",
       "filetypes": ["erlang"]
+    },
+
+    "elixirLS": {
+        "command": "~/codes/elixir/elixir-ls/release/language_server.sh",
+        "filetypes": ["elixir", "eelixir"]
     }
   },
-  "elixirLS.dialyzerEnabled": true
+  "elixir.pathToElixirLS": "~/codes/elixir/elixir-ls/release/language_server.sh",
+  "elixirLS.dialyzerEnabled": false,
+
+  "codeLens.enable": true,
+  "git.enableGutters": false
 }

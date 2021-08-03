@@ -10,10 +10,11 @@ if has("gui_macvim")
 "  set fuoptions=maxvert,maxhorz " fullscreen options (MacVim only), resized window when changed to fullscreen
   "set guifont=DejaVu\ Sans\ YuanTi\ Mono\:h13
   " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h13
-  set guifont=DejaVuSansMonoForPowerline\ Nerd\ Font\:h13
+  " set guifont=DejaVuSansMonoForPowerline\ Nerd\ Font\:h13
+  set guifont=DejaVuSansMono\ Nerd\ Font\ Mono\:h13
   set guioptions-=TLr "去除工具栏
   "set stal=2 " turn on tabs by default
-  " colorscheme ir_black
+  colorscheme gruvbox
 
 elseif has("gui_gtk2")
 
@@ -31,6 +32,10 @@ set guioptions=agie
 " General *********************************************************************
 if !has('nvim')
   set anti " Antialias font
+endif
+
+if has("gui_vimr")
+  " Here goes some VimR specific settings like
 endif
 
 "set transparency=0

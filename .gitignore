@@ -3,3 +3,5 @@
 vim/bundle/**
 vim/tmp/**
 .DS_Store
+/vim/tmp
+/vim/ftplugin/erlang/templates

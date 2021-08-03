@@ -6,7 +6,7 @@ hi Visual guibg=#403D3D ctermbg=238
 hi Normal guibg=NONE ctermbg=NONE
 " set background=dark
 
-" hi DiffAdd        ctermbg=34 ctermfg=311 " guibg=#13354A
-hi DiffAdd        ctermbg=28 " ctermfg=8 " guibg=#13354A
-hi DiffChange     ctermbg=33 " ctermfg=8 " guifg=#89807D guibg=#4C4745
-hi DiffDelete     ctermbg=52 " ctermfg=8 " gui=bold guifg=#960050 guibg=#1E0010
+hi DiffAdd                      guifg=#f0cdc9     guibg=#567c44
+hi DiffChange                   guifg=#fefefe     guibg=#404ea4
+hi DiffDelete     gui=bold      guifg=#c3c3c3     guibg=#a22e26
+
