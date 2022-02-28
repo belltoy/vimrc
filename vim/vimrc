@@ -238,6 +238,17 @@ Plug 'jaredgorski/spacecamp'
 Plug 'guns/vim-sexp',    {'for': 'clojure'}
 Plug 'liquidz/vim-iced', {'for': 'clojure'}
 
+if (has("nvim"))
+    Plug 'Olical/conjure'
+endif
+
+Plug 'eraserhd/parinfer-rust', {'do': 'cargo build --release'}
+
+augroup VIM_SEXP_MAPPING
+    autocmd!
+    autocmd FileType clojure,scheme,lisp,timl call s:vim_sexp_mappings()
+augroup END
+
 " Plug 'junegunn/rainbow_parentheses.vim'
 
 " Always On:
@@ -314,28 +325,6 @@ Plug 'editorconfig/editorconfig-vim'
 
 " Use release branch (recommend)
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Coc Key mappings
-" Use `[g` and `]g` to navigate diagnostics
-" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
-nmap <silent> [g <Plug>(coc-diagnostic-prev)
-nmap <silent> ]g <Plug>(coc-diagnostic-next)
-
-" GoTo code navigation.
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-
-" Use K to show documentation in preview window.
-nnoremap <silent> K :call <SID>show_documentation()<CR>
-
-function! s:show_documentation()
-  if (index(['vim','help'], &filetype) >= 0)
-    execute 'h '.expand('<cword>')
-  else
-    call CocAction('doHover')
-  endif
-endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
@@ -484,6 +473,8 @@ Plug 'andymass/vim-matchup'
 
 Plug 'tpope/vim-vinegar'
 
+Plug 'github/copilot.vim'
+
 " The fancy start screen for Vim.
 Plug 'mhinz/vim-startify'
 let g:startify_change_to_dir = 0
@@ -504,7 +495,22 @@ let g:indentLine_enabled = 0
 let g:indentLine_char = '│'
 " let g:indentLine_char_list = ['│', '|', '¦', '┆', '┊']
 
+Plug 'ruanyl/vim-gh-line'
+
+let g:gh_gitlab_domain = "registry.code.tuya-inc.top"
+let g:gh_open_command = 'open '
+let g:gh_line_blame_map_default = 0
+let g:gh_line_blame_map = '<leader>ggb'
+
+Plug 'lfe-support/vim-lfe'
+
+Plug 'j-hui/fidget.nvim'
+
 call plug#end()
+
+if (has("nvim"))
+    lua require"fidget".setup{}
+endif
 
 set conceallevel=3
 if exists("g:loaded_webdevicons")
@@ -632,7 +638,7 @@ au BufRead,BufNewFile *.log{.\d}\\\{0,\} setlocal ft=log
 
 au BufRead,BufNewFile *.eco setlocal filetype=html
 
-au BufRead,BufNewFile {ci{.*}\|sys{.*}\|rebar\|reltool\|vars{.*}\|elvis\|app{.*}}.config{.script\|.example}\\\{0,1\} setlocal ft=erlang
+au BufRead,BufNewFile {ci{.*}\|sys{.*}\|rebar\|reltool\|vars{.*}\|elvis\|app{.*}}.config{.script\|.example\|.src}\\\{0,1\} setlocal ft=erlang
 au BufRead,BufNewFile {ci\|sys\|rebar\|reltool\|vars\|elvis\|app}{.*}\\\{0,1\}.config setlocal ft=erlang
 au BufRead,BufNewFile rebar.lock setlocal ft=erlang
 au BufRead,BufNewFile *.app.src setlocal ft=erlang
@@ -642,7 +648,7 @@ autocmd BufReadPost erlang_ls.config setlocal filetype=yaml
 au BufRead,BufNewFile */_build/**/{RELEASES\|*.{rel\|script\|config}} setlocal ft=erlang
 let erlang_folding = 0
 " exclude single quotes from delimitMate in Clojure code
-autocmd FileType clojure,lisp let b:delimitMate_quotes = "\""
+autocmd FileType clojure,lisp,lfe let b:delimitMate_quotes = "\""
 let g:clojure_align_multiline_strings = 1
 " }}}
 
@@ -755,7 +761,7 @@ autocmd FileType java setlocal omnifunc=javacomplete#Complete
 " Start interactive EasyAlign in visual mode
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign with a Vim movement
-nmap <Leader>a <Plug>(EasyAlign)
+nmap <Leader><space>a <Plug>(EasyAlign)
 
 " NERDTreDTree********************************************************** {{{
 " map <F10> :NERDTreeToggle<CR>
@@ -824,6 +830,37 @@ let g:tagbar_type_go = {
 \ }
 
 " }}}
+
+" Coc Key mappings
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a <Plug>(coc-codeaction-selected)
+nmap <leader>a <Plug>(coc-codeaction-selected)
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
 
 
 " BufExplorer *********************************************************** {{{
@@ -912,6 +949,9 @@ let g:Lf_ShortcutF = '<C-P>'
 nmap <silent> <Leader>f :Files<CR>
 nmap <silent> <Leader>git :GitFiles<CR>
 nmap <silent> <Leader>b :Buffers<CR>
+nmap <silent> <Leader>gb :Git blame<CR>
+
+autocmd BufRead,BufNewFile *.env{.*} setlocal ft=sh
 
 " How do I get both NERDTree and Startify working at startup?~
 autocmd VimEnter *

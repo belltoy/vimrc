@@ -18,7 +18,8 @@ if has("gui_macvim")
 
 elseif has("gui_gtk2")
 
-  set guifont=DejaVu\ Sans\ YuanTi\ Mono\ 10
+  " set guifont=DejaVu\ Sans\ YuanTi\ Mono\ 10
+  set guifont=DejaVuSansMono\ Nerd\ Font\ Mono\:h13
   set guioptions-=T "去除工具栏
 
 elseif has("x11")
@@ -36,6 +37,13 @@ endif
 
 if has("gui_vimr")
   " Here goes some VimR specific settings like
+  set guifont=DejaVuSansMono\ Nerd\ Font\ Mono\:h13
+endif
+
+if has("nvim")
+  " Here goes some VimR specific settings like
+  " set guifont=DejaVuSansMono\ Nerd\ Font\ Mono\:h13
+  set guifont=DejaVuSansMono\ Nerd\ Font\:h13
 endif
 
 "set transparency=0
@@ -53,3 +61,7 @@ set gtl=%t gtt=%F
 "nmap <C-[> gT
 
 hi Search guibg=#cfff00
+
+let g:neovide_fullscreen=v:true
+" let g:neovide_transparency=0.9
+let g:neovide_input_use_logo=v:true
