@@ -44,9 +44,16 @@
         "filetypes": ["elixir", "eelixir"]
     }
   },
+
+  "rust-analyzer.inlayHints.enable": false,
+
+  "rust-analyzer.lens.enable": false,
+  "rust-analyzer.updates.checkOnStartup": false,
+
   "elixir.pathToElixirLS": "~/codes/elixir/elixir-ls/release/language_server.sh",
   "elixirLS.dialyzerEnabled": false,
 
   "codeLens.enable": true,
+  "diagnostic.maxWindowHeight": 28,
   "git.enableGutters": false
 }

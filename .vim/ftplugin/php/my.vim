@@ -1,6 +1,4 @@
 set iskeyword=@,48-57,_,128-167,224-235
-"source /home/belltoy/.vim/files/phpfolding.vim
-"source /home/belltoy/.vim/files/PDV.vim  " PDV (phpDocumentor for Vim) 
 " php doc
 " 输入 <F12> 就能直接写入注释.
 " 插入模式

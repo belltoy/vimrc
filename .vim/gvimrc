@@ -11,7 +11,7 @@ if has("gui_macvim")
   "set guifont=DejaVu\ Sans\ YuanTi\ Mono\:h13
   " set guifont=DejaVu\ Sans\ Mono\ for\ Powerline\:h13
   " set guifont=DejaVuSansMonoForPowerline\ Nerd\ Font\:h13
-  set guifont=DejaVuSansMono\ Nerd\ Font\ Mono\:h13
+  set guifont=DejaVuSansM\ Nerd\ Font\ Mono\:h13
   set guioptions-=TLr "去除工具栏
   "set stal=2 " turn on tabs by default
   colorscheme gruvbox
@@ -19,7 +19,7 @@ if has("gui_macvim")
 elseif has("gui_gtk2")
 
   " set guifont=DejaVu\ Sans\ YuanTi\ Mono\ 10
-  set guifont=DejaVuSansMono\ Nerd\ Font\ Mono\:h13
+  set guifont=DejaVuSansM\ Nerd\ Font\ Mono\:h13
   set guioptions-=T "去除工具栏
 
 elseif has("x11")
@@ -61,6 +61,7 @@ set gtl=%t gtt=%F
 "nmap <C-[> gT
 
 hi Search guibg=#cfff00
+hi Pmenu ctermfg=81 ctermbg=16 guifg=#66D9EF guibg=#2b2a2a
 
 let g:neovide_fullscreen=v:true
 " let g:neovide_transparency=0.9

@@ -1,0 +1,4 @@
+" hi CocUnusedHighlight guibg=#303454
+hi CocUnusedHighlight guibg=#786245
+" hi Conceal guibg=#786245
+hi Pmenu ctermfg=81 ctermbg=16 guifg=#66D9EF guibg=#2b2a2a
